@@ -11,12 +11,12 @@ import java.awt.Color;
  *
  * @author fer_p
  */
-public class ColorTablero {
+public class ColorJugador {
     
     private Jugador[] jugadores = new Jugador[4];
     private Color[] colores = new Color[4];
     
-    ColorTablero(Jugador[] jugadores){
+    ColorJugador(Jugador[] jugadores){
         this.jugadores = jugadores;
         coloresDefault();
         

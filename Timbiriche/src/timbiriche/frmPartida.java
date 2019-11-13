@@ -20,7 +20,7 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
     JButton botones[][];
     JPanel cuadros[][];
     Partida partida;
-    ColorTablero colorTablero;
+    ColorJugador colorTablero;
     
     Jugador jugador1 = new Jugador("Fernando");
     Jugador jugador2 = new Jugador("Bismarck");
@@ -37,7 +37,7 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
         partida.agregarJugador(jugador1);//Los agregue para pruebas
         partida.agregarJugador(jugador2);//los agregue para pruebas
         
-        colorTablero = new ColorTablero(partida.obtenerJugadores());
+        colorTablero = new ColorJugador(partida.obtenerJugadores());
         agregarLineas(partida.getTablero().getSizeX(),partida.getTablero().getSizeY());
         agregarCuadros(partida.getTablero().getSizeX(),partida.getTablero().getSizeY());
     }
