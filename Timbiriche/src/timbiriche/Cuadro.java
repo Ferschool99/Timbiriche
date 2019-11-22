@@ -5,11 +5,13 @@
  */
 package timbiriche;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author fer_p
  */
-public class Cuadro implements ElementoJuego{
+public class Cuadro extends JButton implements ElementoJuego{
     
     private Jugador owner;
 
@@ -21,6 +23,7 @@ public class Cuadro implements ElementoJuego{
     @Override
     public void addOwner(Jugador owner) {
         this.owner = owner;
+        this.setText("M");
     }
 
     @Override

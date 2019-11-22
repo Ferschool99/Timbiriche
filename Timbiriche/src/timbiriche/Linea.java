@@ -5,17 +5,20 @@
  */
 package timbiriche;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author fer_p
  */
-public class Linea implements ElementoJuego{
+public class Linea extends JButton implements ElementoJuego{
     
     private Jugador owner;
 
     @Override
     public void addOwner(Jugador owner) {
         this.owner = owner;
+        this.setText("M");
     }
 
     @Override

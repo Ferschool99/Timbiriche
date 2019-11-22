@@ -26,7 +26,7 @@ public class Partida {
      * @param x El tamaño del tablero creado para la partida
      * @param y El tamaño del tablero creado para la partida
      */
-    private Partida(){
+    Partida(){
         crearTablero(10,10); //Como aun no esta el frmCrear partida para crear
                             //el tablero lo cree aqui para pruebas
     }
@@ -52,15 +52,26 @@ public class Partida {
         for(int i=0; i<4; i++){
             if(jugadores[i]==null){
                 jugadores[i] = jugador;
+                System.out.println("1");
+                
+        numJugadores++;
                 return true;
             }
         }
-        numJugadores++;
         return false;
     }
     
+    public Jugador[] obtenerJugadores() {
+        return jugadores;
+    }
+    
+    public int obtenerNumJugadores() {
+        return numJugadores;
+    }
+    
+    private int i = 0;
     private boolean turno(Jugador jugador){
-        int i = 0;
+        
         if(i == numJugadores)i = 0;
         if(jugadores[i] == jugador){
             i++;
@@ -68,12 +79,6 @@ public class Partida {
         }
         return false;
     }
-
-    public Jugador[] obtenerJugadores() {
-        return jugadores;
-    }
-    
-    
     
     public boolean ejecutarTurno(Jugador jugador, int i, int j){
         if(turno(jugador)){
@@ -84,6 +89,8 @@ public class Partida {
         return false;
     }
 
+    
+    
     public Tablero getTablero() {
         return tablero;
     }

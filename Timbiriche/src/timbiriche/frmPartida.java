@@ -6,10 +6,14 @@
 package timbiriche;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicGraphicsUtils;
 
 /**
  *
@@ -20,10 +24,7 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
     JButton botones[][];
     JPanel cuadros[][];
     Partida partida;
-    ColorJugador colorTablero;
-    
-    Jugador jugador1 = new Jugador("Fernando");
-    Jugador jugador2 = new Jugador("Bismarck");
+    ColorTablero colorTablero;
     
     
     /**
@@ -33,13 +34,28 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
         initComponents();
         this.setResizable(false);
         partida = Partida.obtenerInstancia();
-        
-        partida.agregarJugador(jugador1);//Los agregue para pruebas
-        partida.agregarJugador(jugador2);//los agregue para pruebas
-        
-        colorTablero = new ColorJugador(partida.obtenerJugadores());
+        colorTablero = new ColorTablero(partida.obtenerJugadores());
         agregarLineas(partida.getTablero().getSizeX(),partida.getTablero().getSizeY());
         agregarCuadros(partida.getTablero().getSizeX(),partida.getTablero().getSizeY());
+        int j=partida.obtenerNumJugadores();
+        System.out.println(j);
+        jLabel1.setText(Partida.obtenerInstancia().obtenerJugadores()[0].getName());
+        if(j==2)
+        {
+            jLabel2.setText(Partida.obtenerInstancia().obtenerJugadores()[1].getName());
+        }
+        if(j==3)
+        {
+            jLabel2.setText(Partida.obtenerInstancia().obtenerJugadores()[1].getName());
+            jLabel3.setText(Partida.obtenerInstancia().obtenerJugadores()[2].getName());
+        }
+        if(j==4)
+        {
+            jLabel2.setText(Partida.obtenerInstancia().obtenerJugadores()[1].getName());
+            jLabel3.setText(Partida.obtenerInstancia().obtenerJugadores()[2].getName());
+            jLabel4.setText(Partida.obtenerInstancia().obtenerJugadores()[3].getName());
+        }
+        botonJugador1.setBackground(colorTablero.obtenerColor(partida.obtenerJugadores()[0]));
     }
     
     /**
@@ -55,6 +71,7 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
             for (int j = 0; j < p.getTablero().getSizeY(); j++) {
                 if(cuadros[i][j].getOwner() != null){
                     this.cuadros[i][j].setBackground(colorTablero.obtenerColor(cuadros[i][j].getOwner()));
+                
                 }
             }
         }
@@ -66,7 +83,9 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
         for (int i = 0; i < (p.getTablero().getSizeX()*2)+1; i++) {
             for (int j = 0; j < p.getTablero().getSizeY()+1; j++) {
                 if(lineas[i][j].getOwner() != null){
+                    //this.botones[i][j].set;
                     this.botones[i][j].setBackground(colorTablero.obtenerColor(lineas[i][j].getOwner()));
+                    //this.botones[i][j].setEnabled(false);
                 }
             }
         }
@@ -153,6 +172,12 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
     private void initComponents() {
 
         panelTablero = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        botonTerminarPartida = new javax.swing.JButton();
+        botonJugador1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(800, 500));
@@ -171,12 +196,40 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
             .addGap(0, 501, Short.MAX_VALUE)
         );
 
+        botonTerminarPartida.setText("Terminar Partida");
+        botonTerminarPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonTerminarPartidaActionPerformed(evt);
+            }
+        });
+
+        botonJugador1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonJugador1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(278, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                                .addComponent(botonJugador1))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(botonTerminarPartida)))
+                .addGap(87, 87, 87)
                 .addComponent(panelTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -186,46 +239,37 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
                 .addContainerGap()
                 .addComponent(panelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3))
+                    .addComponent(botonJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonTerminarPartida)
+                .addGap(55, 55, 55))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmPartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void botonTerminarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTerminarPartidaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_botonTerminarPartidaActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmPartida().setVisible(true);
-            }
-        });
-    }
+    private void botonJugador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonJugador1ActionPerformed
+        // TODO add your handling code here:
+        Color color=JColorChooser.showDialog(this, "Elige un color", Color.BLACK);
+        colorTablero.asignarColor(partida.obtenerJugadores()[0], color);
+        botonJugador1.setBackground(color);
+    }//GEN-LAST:event_botonJugador1ActionPerformed
 
     
     //Aqui es donde estaremos interpretando todas las entradas de eventos de los botones
@@ -233,14 +277,14 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         for (int i = 0; i < 22; i++) {
             for (int j = 0; j < 11; j++) {
-                if(ae.getSource() == botones[i][j]){
+                if(ae.getSource() == botones[i][j] && partida.getTablero().obtenerLineas()[i][j].getOwner()==null){
                     Tablero t = Tablero.obtenerInstancia(10, 10);
                     //botones[i][j].setBackground(Color.black);
                     
-                    if(partida.ejecutarTurno(jugador1,i,j)){ //va y le pregunta a partida si es su turno
+                    if(partida.ejecutarTurno(partida.obtenerJugadores()[0],i,j)){ //va y le pregunta a partida si es su turno
                         //los estoy cambiando dinamicamente para pruebas y solo tener dos xd
                     }else{
-                       partida.ejecutarTurno(jugador2, i, j);
+                       partida.ejecutarTurno(partida.obtenerJugadores()[1],i,j);
                     }
                     
                     pintarLineas();
@@ -252,6 +296,12 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonJugador1;
+    private javax.swing.JButton botonTerminarPartida;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel panelTablero;
     // End of variables declaration//GEN-END:variables
 }

@@ -117,8 +117,11 @@ public class Tablero implements ElementoJuego{
                     lineas[contx+1][j+1].getOwner()!=null &&
                     lineas[contx+1][j].getOwner()!=null &&
                     lineas[contx+2][j].getOwner()!=null){
+                    System.out.println("Agrego Cuadro al: "+owner.getName());
+                    if(cuadros[j][i].getOwner()==null){
+                        cuadros[j][i].addOwner(owner);
+                    }
                     
-                    cuadros[j][i].addOwner(owner);
                 }
             }
             contx++;
