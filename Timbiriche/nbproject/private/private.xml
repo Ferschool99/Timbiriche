@@ -5,7 +5,10 @@
         <group>
             <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/timbiriche/FrmInicio.java</file>
             <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/timbiriche/FrmConexionIP.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/comunicacion/Comunicacion.java</file>
             <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/timbiriche/FrmCrearPartida.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/comunicacion/Proxy.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/comunicacion/RealComunicacion.java</file>
         </group>
     </open-files>
 </project-private>
