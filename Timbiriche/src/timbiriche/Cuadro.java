@@ -14,6 +14,8 @@ import javax.swing.JButton;
 public class Cuadro extends JButton implements ElementoJuego{
     
     private Jugador owner;
+    private int positionX;
+    private int positionY;
 
     @Override
     public Jugador getOwner() {
