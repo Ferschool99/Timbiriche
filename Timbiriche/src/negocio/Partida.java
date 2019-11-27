@@ -19,14 +19,14 @@ public class Partida implements IFacadePartida{
     Tablero tablero;
     
     public Partida() {
-        this.jugadores = new ArrayList();
-        jugadores.add(jugador);
-        this.turno = jugador;
+        this.jugadores = new ArrayList();        
     }
     
     @Override
     public void crearPartida(String nombre, String ip, String puerto, Icon avatar) {
-        
+        Jugador jugador = new Jugador(nombre, puerto, ip, avatar);
+        jugadores.add(jugador);
+        this.turno = jugador;
     }
 
     @Override
