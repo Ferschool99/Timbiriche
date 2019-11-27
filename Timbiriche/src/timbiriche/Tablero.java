@@ -12,7 +12,7 @@ package timbiriche;
 public class Tablero implements ElementoJuego{
     
     private ElementoJuego lineas[][];//Lineas horizontales
-    private ElementoJuego cuadros[][];//cuadros creados
+    private ElementoJuego cuadros[][];//cuadros creadoss
 
     private int sizeX;
     private int sizeY;
