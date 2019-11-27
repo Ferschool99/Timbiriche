@@ -5,10 +5,8 @@
  */
 package pruebaSocket;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -22,7 +20,7 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
     private String mensajeServidor; //Mensajes entrantes (recibidos) en el servidor
     private ServerSocket ss; //Socket del servidor
     private Socket cs; //Socket del cliente
-    private DataOutputStream salidaCliente; //Flujo de datos de salida
+    private ObjectInputStream salidaCliente; //Flujo de datos de salida
     private String msgRecibido="";
     
     public Recceiver(int puerto) throws IOException{
@@ -40,19 +38,17 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
             cs = ss.accept(); //Accept comienza el socket y espera una conexión desde un cliente
             System.out.println(".::Remitente en línea::.");
             //Se obtiene el flujo de salida del cliente para enviarle mensajes
-            salidaCliente = new DataOutputStream(cs.getOutputStream());
+            salidaCliente = new ObjectInputStream(cs.getInputStream());
             //Se le envía un mensaje al cliente usando su flujo de salida
             //Se obtiene el flujo entrante desde el cliente
-            BufferedReader entrada = new BufferedReader(new InputStreamReader(cs.getInputStream()));
+            Jugador jugador = (Jugador) salidaCliente.readObject();
 
-            while((mensajeServidor = entrada.readLine()) != null) //Mientras haya mensajes desde el cliente
-            {
                 //Se muestra por pantalla el mensaje recibido
-                msgRecibido=mensajeServidor;
+                msgRecibido = jugador.getNombre();
                 Peer per = Peer.obtenerInstancia();
                 per.recibirMensage(msgRecibido);
-                System.out.println("Mensaje:  "+mensajeServidor);
-            }
+                System.out.println("Mensaje:  "+msgRecibido);
+            
             
             ss.close();//Se finaliza la conexión con el cliente
         

@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comunicacion;
+package pruebaSocket;
 
+import java.io.Serializable;
 import javax.swing.Icon;
 
 /**
  *
  * @author Fernando
  */
-public class Jugador {
+public class Jugador implements Serializable{
     
     String nombre;
     String ip;
