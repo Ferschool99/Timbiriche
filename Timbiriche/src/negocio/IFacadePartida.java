@@ -5,7 +5,7 @@
  */
 package negocio;
 
-import java.awt.List;
+import javax.swing.Icon;
 
 /**
  * Esta es la clase que sera visible para los demoas componentes del sistema 
@@ -17,8 +17,12 @@ public interface IFacadePartida {
     
     /**
      * Este metodo permite crear un tablero
+     * @param nombre
+     * @param ip
+     * @param avatar
+     * @param puerto
      */
-    public void crearPartida(Jugador jugador);
+    public void crearPartida(String nombre, String ip, String puerto, Icon avatar);
     
     /**
      * Este metodo permite a los jugadores iniciar la partida

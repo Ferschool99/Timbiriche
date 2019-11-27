@@ -26,7 +26,9 @@ public class FrmRegistro extends javax.swing.JFrame {
         File imagen = new File("E:\\Mauriciowi100\\Documents\\GitHub\\Timbiriche\\Timbiriche\\imagen2.jpg");
         ImageIcon icon;
         icon = new ImageIcon(imagen.toString());
+        System.out.println(icon);
         Icon icono = new ImageIcon(icon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT));
+        System.out.println(icono);
         lblFoto.setText(null);
         lblFoto.setIcon(icono);
     }

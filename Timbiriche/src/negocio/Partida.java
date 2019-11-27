@@ -5,8 +5,8 @@
  */
 package negocio;
 
-import java.awt.List;
 import java.util.ArrayList;
+import javax.swing.Icon;
 
 /**
  *
@@ -18,14 +18,14 @@ public class Partida implements IFacadePartida{
     Jugador turno;
     Tablero tablero;
     
-    public Partida(Jugador jugador) {
+    public Partida() {
         this.jugadores = new ArrayList();
         jugadores.add(jugador);
         this.turno = jugador;
     }
     
     @Override
-    public void crearPartida(Jugador jugador) {
+    public void crearPartida(String nombre, String ip, String puerto, Icon avatar) {
         
     }
 
