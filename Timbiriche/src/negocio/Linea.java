@@ -21,12 +21,6 @@ public class Linea implements ElementoJuego{
     }
 
     @Override
-    public void setOwner(Jugador owner) {
-        this.owner = owner;
-    }
-    
-    
-    @Override
     public Jugador getOwner() {
         return owner;
     }
