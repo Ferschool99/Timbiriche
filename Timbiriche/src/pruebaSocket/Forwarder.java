@@ -39,7 +39,7 @@ public class Forwarder
             //Flujo de datos hacia el Recibidor
             salidaServidor = new ObjectOutputStream(cs.getOutputStream());
             
-            salidaServidor.writeObject(new Jugador("FErnadno", "", "", new ImageIcon("E:\\Mauriciowi100\\Documents\\GitHub\\Timbiriche\\Timbiriche\\imagen2.jpg")));
+            salidaServidor.writeObject(new Jugador(msg, "", "", new ImageIcon("E:\\Mauriciowi100\\Documents\\GitHub\\Timbiriche\\Timbiriche\\imagen2.jpg")));
             salidaServidor.flush();
             cs.close();//Fin de la conexión
 

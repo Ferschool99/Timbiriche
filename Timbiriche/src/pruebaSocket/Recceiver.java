@@ -46,11 +46,10 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
                 //Se muestra por pantalla el mensaje recibido
                 msgRecibido = jugador.getNombre();
                 Peer per = Peer.obtenerInstancia();
+                ss.close();
                 per.recibirMensage(msgRecibido);
                 System.out.println("Mensaje:  "+msgRecibido);
-            
-            
-            ss.close();//Se finaliza la conexión con el cliente
+            ;//Se finaliza la conexión con el cliente
         
         }
         catch (Exception e)
