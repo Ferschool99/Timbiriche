@@ -20,9 +20,6 @@ class Partida implements IFacadePartida{
     private static Partida partida;
     
     public Partida() {
-<<<<<<< HEAD
-        this.jugadores = new ArrayList();
-=======
         this.jugadores = new ArrayList();    
         
     }
@@ -46,11 +43,9 @@ class Partida implements IFacadePartida{
     }
     
     @Override
-    public void crearPartida(String nombre, String ip, String puerto, Icon avatar) {
-        Jugador jugador = new Jugador(nombre, puerto, ip, avatar);
+    public void crearPartida(Jugador jugador) {
         jugadores.add(jugador);
         this.turno = jugador;
->>>>>>> 68a7ae6682cba0c64d88eb36096938177122aed5
     }
 
     @Override

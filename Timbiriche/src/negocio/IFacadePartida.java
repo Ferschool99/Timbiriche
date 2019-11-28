@@ -18,19 +18,16 @@ import static negocio.Partida.getPartida;
 public interface IFacadePartida {
     
     /**
-<<<<<<< HEAD
-=======
      * Este metodo permite crear un tablero
      * @param nombre
      * @param ip
      * @param avatar
      * @param puerto
      */
-    public void crearPartida(String nombre, String ip, String puerto, Icon avatar);
+    public void crearPartida(Jugador jugador);
     
     
     /**
->>>>>>> 68a7ae6682cba0c64d88eb36096938177122aed5
      * Este metodo permite a los jugadores iniciar la partida
      * @return True en caso de que la partida haya sido iniciada con exito
      */
