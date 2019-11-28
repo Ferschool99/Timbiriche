@@ -5,6 +5,7 @@
  */
 package comunicacion;
 
+import java.util.ArrayList;
 import timbiriche.Jugador;
 import timbiriche.Linea;
 import timbiriche.Partida;
@@ -14,31 +15,15 @@ import timbiriche.Partida;
  * @author Fernando
  */
 public interface Comunicacion {
-    /**
-     * Este metodo permite realizar un movimiento en el tablero de timbiriche
-     * @return regresa verdader en caso de aver efectuado el movimiento con
-     * exito
-     */
-    public boolean realizarMovimiento(Partida partida, Linea linea);
     
-    /**
-     * Este metodo permite crear una partida dentro del juego de timbiriche
-     * @return regresa verdadero en caso de havber creado la partida con exito
-     */
-    public boolean crearPartida(Partida partida);
+    public void realizarMovimiento(Linea linea);
     
-    /**
-     * Este metodo permite a un jugador ingresar a una partida
-     * @param jugador El jugador que esta solicitando ingresar a la partida
-     * @return La partida a la que se ha unido el jugador
-     */
-    public Partida unirsePartida(Jugador jugador, String ip, String puerto);
+    public void enviarJugadores(ArrayList jugadores);
     
-    /**
-     * Este metodo permite a un jugador abandonar la partida
-     * @return Regresa verdader en caso de haber realizado la operacion con
-     * exito
-     */
-    public boolean abandonarPartida(Partida partida, Jugador jugador);
+    public void recibirJugadores(ArrayList jugadores);
+    
+    public void unirsePartida(Jugador jugador, String ip, String puerto);
+    
+    public void abandonarPartida(Jugador jugador);
 
 }

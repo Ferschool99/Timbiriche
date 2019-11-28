@@ -5,6 +5,7 @@
  */
 package comunicacion;
 
+import java.util.ArrayList;
 import timbiriche.Jugador;
 import timbiriche.Linea;
 import timbiriche.Partida;
@@ -15,24 +16,41 @@ import timbiriche.Partida;
  */
 public class RealComunicacion implements Comunicacion{
 
+    ArrayList<Object> paquete;
+    
+    public RealComunicacion() {
+        paquete = new ArrayList();
+    }
+    
     @Override
-    public boolean realizarMovimiento(Partida partida, Linea linea) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void realizarMovimiento(Linea linea) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean crearPartida(Partida partida) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void enviarJugadores(ArrayList jugadores) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Partida unirsePartida(Jugador jugador, String ip, String puerto) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void recibirJugadores(ArrayList jugadores) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean abandonarPartida(Partida partida, Jugador jugador) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void unirsePartida(Jugador jugador, String ip, String puerto) {
+        paquete.clear();
+        paquete.add("Unirse");
+        paquete.add(jugador);
+        paquete.add(ip);
+        paquete.add(puerto);
     }
+
+    @Override
+    public void abandonarPartida(Jugador jugador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
     
 }

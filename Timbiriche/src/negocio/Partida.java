@@ -12,7 +12,7 @@ import javax.swing.Icon;
  *
  * @author Fernando
  */
-class Partida implements IFacadePartida{
+public class Partida implements IFacadePartida{
 
     ArrayList jugadores;
     Jugador turno;

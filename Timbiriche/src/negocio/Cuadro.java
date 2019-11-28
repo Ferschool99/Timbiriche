@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Fernando
  */
-class Cuadro implements ElementoJuego{
+public class Cuadro implements ElementoJuego{
     
     private Jugador owner;
     private int positionX;

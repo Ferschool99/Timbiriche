@@ -11,7 +11,7 @@ import java.awt.Color;
  *
  * @author Fernando
  */
-class ColorJugador implements IColorJugador{
+public class ColorJugador implements IColorJugador{
 
     private Jugador[] jugadores = new Jugador[4];
     private Color[] colores = new Color[4];

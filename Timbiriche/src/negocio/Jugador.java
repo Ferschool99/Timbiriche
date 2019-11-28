@@ -5,13 +5,14 @@
  */
 package negocio;
 
+import java.io.Serializable;
 import javax.swing.Icon;
 
 /**
  *
  * @author Fernando
  */
-public class Jugador implements IJugador{
+public class Jugador implements IJugador, Serializable{
     
     String nombre;
     String ip;

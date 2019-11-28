@@ -9,7 +9,7 @@ package negocio;
  *
  * @author Fernando
  */
-class Linea implements ElementoJuego{
+public class Linea implements ElementoJuego{
 
     private Jugador owner;
     
