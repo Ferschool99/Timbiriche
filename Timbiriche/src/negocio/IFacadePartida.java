@@ -6,6 +6,7 @@
 package negocio;
 
 import javax.swing.Icon;
+import static negocio.Partida.getPartida;
 
 /**
  * Esta es la clase que sera visible para los demoas componentes del sistema 
@@ -24,11 +25,14 @@ public interface IFacadePartida {
      */
     public void crearPartida(String nombre, String ip, String puerto, Icon avatar);
     
+    
     /**
      * Este metodo permite a los jugadores iniciar la partida
      * @return True en caso de que la partida haya sido iniciada con exito
      */
     public boolean iniciarPartida();
+    
+    
     
     /**
      * Este metodo permite realizar un movimiento a un jugador registrado

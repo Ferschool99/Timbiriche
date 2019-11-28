@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import negocio.Partida;
 
 /**
  *
@@ -28,6 +29,7 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
         ss = new ServerSocket(puerto);//Se crea el socket para el servidor en puerto 1234
         cs = new Socket(); //Socket para el cliente
         start();
+        
     } 
 
     @Override
@@ -41,10 +43,10 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
             salidaCliente = new ObjectInputStream(cs.getInputStream());
             //Se le envía un mensaje al cliente usando su flujo de salida
             //Se obtiene el flujo entrante desde el cliente
-            Jugador jugador = (Jugador) salidaCliente.readObject();
+            Partida jugador = (Partida) salidaCliente.readObject();
 
                 //Se muestra por pantalla el mensaje recibido
-                msgRecibido = jugador.getNombre();
+                msgRecibido = jugador.toString();
                 Peer per = Peer.obtenerInstancia();
                 ss.close();
                 per.recibirMensage(msgRecibido);

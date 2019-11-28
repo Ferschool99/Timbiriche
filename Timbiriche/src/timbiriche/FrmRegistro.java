@@ -11,6 +11,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import negocio.Partida;
 
 /**
  *
@@ -21,6 +22,8 @@ public class FrmRegistro extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarJugador
      */
+    Icon icono;
+    
     public FrmRegistro() {
         initComponents();
         File imagen = new File("E:\\Mauriciowi100\\Documents\\GitHub\\Timbiriche\\Timbiriche\\imagen2.jpg");
@@ -133,7 +136,7 @@ public class FrmRegistro extends javax.swing.JFrame {
 
                         ImageIcon icon = new ImageIcon(fichero.toString());
 
-                        Icon icono = new ImageIcon(icon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT));
+                        icono = new ImageIcon(icon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT));
 
                         lblFoto.setText(null);
 
@@ -149,6 +152,10 @@ public class FrmRegistro extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
+        Partida partida = new Partida();
+        partida.crearPartida(txtUsuario.getText(), "localhost", "9000", icono);
+        this.setVisible(false);
+        new FrmConexionIP().setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**

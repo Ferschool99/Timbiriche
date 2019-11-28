@@ -32,14 +32,14 @@ public class Forwarder
         cs = new Socket(ip, puerto);
     } //Se usa el constructor para remitente de Conexion
 
-    public void enviarMsg(String msg) //Método para iniciar el Remitente
+    public void enviarPartida(Object obj) //Método para iniciar el Remitente
     {
         try
         {
             //Flujo de datos hacia el Recibidor
             salidaServidor = new ObjectOutputStream(cs.getOutputStream());
             
-            salidaServidor.writeObject(new Jugador(msg, "", "", new ImageIcon("E:\\Mauriciowi100\\Documents\\GitHub\\Timbiriche\\Timbiriche\\imagen2.jpg")));
+            salidaServidor.writeObject(obj);
             salidaServidor.flush();
             cs.close();//Fin de la conexión
 

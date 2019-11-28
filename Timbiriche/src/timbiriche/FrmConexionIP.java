@@ -5,10 +5,13 @@
  */
 package timbiriche;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import negocio.FabricaNegocio;
+import negocio.IFacadePartida;
 import pruebaSocket.Forwarder;
 
 /**
@@ -17,6 +20,9 @@ import pruebaSocket.Forwarder;
  */
 public class FrmConexionIP extends javax.swing.JFrame {
 
+    
+    IFacadePartida partida =   FabricaNegocio.getFachada();
+    
     /**
      * Creates new form ConexionIP
      */
@@ -46,6 +52,11 @@ public class FrmConexionIP extends javax.swing.JFrame {
         });
 
         jButton2.setText("Unirse a Partida");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,13 +83,12 @@ public class FrmConexionIP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            
-        } catch (UnknownHostException ex) {
-            Logger.getLogger(FrmConexionIP.class.getName()).log(Level.SEVERE, null, ex);
-        }
+ 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

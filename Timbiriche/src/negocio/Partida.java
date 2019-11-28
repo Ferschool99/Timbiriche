@@ -17,9 +17,29 @@ public class Partida implements IFacadePartida{
     ArrayList jugadores;
     Jugador turno;
     Tablero tablero;
+    private static Partida partida;
     
     public Partida() {
-        this.jugadores = new ArrayList();        
+        this.jugadores = new ArrayList();    
+        
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public static Partida getPartida()
+    {
+        if(partida==null)
+        {
+            partida = new Partida();
+        }
+        else
+        {
+            return partida;
+        }
+        
+        return partida;
     }
     
     @Override
