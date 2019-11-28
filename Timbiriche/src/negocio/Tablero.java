@@ -9,7 +9,7 @@ package negocio;
  *
  * @author Fernando
  */
-public class Tablero {
+class Tablero {
     
     private int sizeX;
     private int sizeY;

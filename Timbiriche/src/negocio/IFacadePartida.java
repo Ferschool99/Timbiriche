@@ -5,6 +5,7 @@
  */
 package negocio;
 
+import java.util.ArrayList;
 import javax.swing.Icon;
 
 /**
@@ -14,15 +15,6 @@ import javax.swing.Icon;
  * @author Fernando
  */
 public interface IFacadePartida {
-    
-    /**
-     * Este metodo permite crear un tablero
-     * @param nombre
-     * @param ip
-     * @param avatar
-     * @param puerto
-     */
-    public void crearPartida(String nombre, String ip, String puerto, Icon avatar);
     
     /**
      * Este metodo permite a los jugadores iniciar la partida
@@ -40,12 +32,10 @@ public interface IFacadePartida {
     public boolean realizarMovimiento(Jugador jugador, ElementoJuego elementoJuego);
     
     /**
-     * Este metodo permite a un jugador registrarse en la partida
-     * @param jugador El jugador que desea registrarse a la partida
-     * @return Partida en caso de haberse registrado a la partida con exito
-     * Null en caso de no haberse podido realizar el registro
+     * Este metodo permite agregar un jugador a la partida
+     * @param jugador El jugador que se ha unido a la partida
      */
-    public Partida registrarJugador(Jugador jugador);
+    public boolean registrarJugador(Jugador jugador);
     
     /**
      * Este metodo permite eliminar un jugador de la partida, borrando todas 
@@ -53,5 +43,18 @@ public interface IFacadePartida {
      * @param jugador El jugador que sera eliminado de la partida
      */
     public void eliminarJugador(Jugador jugador);
+    
+    /**
+     * Este metodo permite a la partida enviar los jugadores que se han registrado
+     * a los demas peers conectados al sistema peer to peer
+     * @return 
+     */
+    public void enviarJugadores();
+    
+    /**
+     * Este metodo permite recibir los jugadores que estan registrados a la partida
+     * @param jugadores Los jugadores que se han registrado a la partida
+     */
+    public void recibirJugadores(ArrayList<Jugador> jugadores);
     
 }

@@ -11,7 +11,7 @@ import javax.swing.Icon;
  *
  * @author Fernando
  */
-public class Jugador {
+public class Jugador implements IJugador{
     
     String nombre;
     String ip;

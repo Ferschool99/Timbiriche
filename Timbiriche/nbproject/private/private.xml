@@ -2,6 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/Test/Tester.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/timbiriche/FrmConexionIP.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/Cuadro.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/IFacadePartida.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/IJugador.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/Tablero.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/Creator.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/Jugador.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/ElementoJuego.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/ConcreateCreator.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/Linea.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/Partida.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/timbiriche/ColorJugador.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/ColorJugador.java</file>
+            <file>file:/C:/Users/Fernando/Desktop/Timbiriche/Timbiriche/src/negocio/IColorJugador.java</file>
+        </group>
     </open-files>
 </project-private>
