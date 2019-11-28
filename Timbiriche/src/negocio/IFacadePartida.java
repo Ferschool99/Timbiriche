@@ -5,6 +5,7 @@
  */
 package negocio;
 
+import java.util.ArrayList;
 import javax.swing.Icon;
 import static negocio.Partida.getPartida;
 
@@ -17,6 +18,8 @@ import static negocio.Partida.getPartida;
 public interface IFacadePartida {
     
     /**
+<<<<<<< HEAD
+=======
      * Este metodo permite crear un tablero
      * @param nombre
      * @param ip
@@ -27,6 +30,7 @@ public interface IFacadePartida {
     
     
     /**
+>>>>>>> 68a7ae6682cba0c64d88eb36096938177122aed5
      * Este metodo permite a los jugadores iniciar la partida
      * @return True en caso de que la partida haya sido iniciada con exito
      */
@@ -44,12 +48,10 @@ public interface IFacadePartida {
     public boolean realizarMovimiento(Jugador jugador, ElementoJuego elementoJuego);
     
     /**
-     * Este metodo permite a un jugador registrarse en la partida
-     * @param jugador El jugador que desea registrarse a la partida
-     * @return Partida en caso de haberse registrado a la partida con exito
-     * Null en caso de no haberse podido realizar el registro
+     * Este metodo permite agregar un jugador a la partida
+     * @param jugador El jugador que se ha unido a la partida
      */
-    public Partida registrarJugador(Jugador jugador);
+    public boolean registrarJugador(Jugador jugador);
     
     /**
      * Este metodo permite eliminar un jugador de la partida, borrando todas 
@@ -57,5 +59,18 @@ public interface IFacadePartida {
      * @param jugador El jugador que sera eliminado de la partida
      */
     public void eliminarJugador(Jugador jugador);
+    
+    /**
+     * Este metodo permite a la partida enviar los jugadores que se han registrado
+     * a los demas peers conectados al sistema peer to peer
+     * @return 
+     */
+    public void enviarJugadores();
+    
+    /**
+     * Este metodo permite recibir los jugadores que estan registrados a la partida
+     * @param jugadores Los jugadores que se han registrado a la partida
+     */
+    public void recibirJugadores(ArrayList<Jugador> jugadores);
     
 }

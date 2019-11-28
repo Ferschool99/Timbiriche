@@ -12,7 +12,7 @@ import javax.swing.Icon;
  *
  * @author Fernando
  */
-public class Partida implements IFacadePartida{
+class Partida implements IFacadePartida{
 
     ArrayList jugadores;
     Jugador turno;
@@ -20,6 +20,9 @@ public class Partida implements IFacadePartida{
     private static Partida partida;
     
     public Partida() {
+<<<<<<< HEAD
+        this.jugadores = new ArrayList();
+=======
         this.jugadores = new ArrayList();    
         
     }
@@ -47,26 +50,47 @@ public class Partida implements IFacadePartida{
         Jugador jugador = new Jugador(nombre, puerto, ip, avatar);
         jugadores.add(jugador);
         this.turno = jugador;
+>>>>>>> 68a7ae6682cba0c64d88eb36096938177122aed5
     }
 
     @Override
     public boolean iniciarPartida() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(jugadores.size() >= 2){
+            tablero = new Tablero((jugadores.size()*10),(jugadores.size()*10));
+        }else{
+            return false;
+        }
+        return true;
     }
 
     @Override
     public boolean realizarMovimiento(Jugador jugador, ElementoJuego elementoJuego) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Partida registrarJugador(Jugador jugador) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean registrarJugador(Jugador jugador) {
+        if(jugadores.size() == 4){
+            return false;
+        }else{
+            jugadores.add(jugador);
+        }
+        return true;
     }
 
     @Override
     public void eliminarJugador(Jugador jugador) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void enviarJugadores() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void recibirJugadores(ArrayList<Jugador> jugadores) {
+        this.jugadores = jugadores;
     }
     
 }
