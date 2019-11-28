@@ -127,7 +127,7 @@ public class Peer extends javax.swing.JFrame {
         }
 
         System.out.println("Iniciando cliente\n");
-        cli.enviarMsg(txtMensaje.getText());//Se inicia el cliente
+        cli.enviarPartida(txtMensaje.getText());//Se inicia el cliente
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     
