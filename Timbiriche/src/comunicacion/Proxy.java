@@ -6,9 +6,8 @@
 package comunicacion;
 
 import java.util.ArrayList;
-import timbiriche.Jugador;
-import timbiriche.Linea;
-import timbiriche.Partida;
+import negocio.Jugador;
+import negocio.Linea;
 
 /**
  *

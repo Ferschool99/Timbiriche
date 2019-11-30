@@ -16,7 +16,7 @@ public class Jugador implements IJugador, Serializable{
     
     String nombre;
     String ip;
-    String puerto;
+    int puerto;
     int puntos;
     Icon avatar;
     
@@ -25,7 +25,7 @@ public class Jugador implements IJugador, Serializable{
         
     }
     
-    public Jugador(String nombre, String puerto, String ip, Icon avatar)
+    public Jugador(String nombre, int puerto, String ip, Icon avatar)
     {
         this.nombre = nombre;
         this.puerto = puerto;
@@ -54,11 +54,11 @@ public class Jugador implements IJugador, Serializable{
         this.ip = ip;
     }
 
-    public String getPuerto() {
+    public int getPuerto() {
         return puerto;
     }
 
-    public void setPuerto(String puerto) {
+    public void setPuerto(int puerto) {
         this.puerto = puerto;
     }
 
