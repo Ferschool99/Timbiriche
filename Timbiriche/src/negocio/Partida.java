@@ -6,7 +6,6 @@
 package negocio;
 
 import java.util.ArrayList;
-import javax.swing.Icon;
 
 /**
  *
@@ -43,9 +42,9 @@ public class Partida implements IFacadePartida{
     }
     
     @Override
-    public void crearPartida(Jugador jugador) {
-        jugadores.add(jugador);
-        this.turno = jugador;
+    public void crearPartida(IJugador jugador) {
+        jugadores.add((Jugador)jugador);
+        
     }
 
     @Override

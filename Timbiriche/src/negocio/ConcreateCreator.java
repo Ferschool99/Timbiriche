@@ -9,13 +9,12 @@ package negocio;
  *
  * @author Fernando
  */
-public class ConcreateCreator implements Creator {
+public class ConcreateCreator {
 
-    @Override
-    public Object factoryMethod(String str) {
+    public static Object factoryMethod(String str) {
         
         if("Partida".equalsIgnoreCase(str)){
-            return new Partida();
+            return Partida.getPartida();
         }
         if("Jugador".equalsIgnoreCase(str)){
             return new Jugador();

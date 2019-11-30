@@ -5,14 +5,7 @@
  */
 package timbiriche;
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import negocio.FabricaNegocio;
-import negocio.IFacadePartida;
-import pruebaSocket.Forwarder;
+import negocio.IJugador;
 
 /**
  *
@@ -21,7 +14,7 @@ import pruebaSocket.Forwarder;
 public class FrmConexionIP extends javax.swing.JFrame {
 
     
-    IFacadePartida partida =   FabricaNegocio.getFachada();
+    public IJugador jugador;
     
     /**
      * Creates new form ConexionIP
@@ -83,11 +76,17 @@ public class FrmConexionIP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
+        FrmCrearPartida frm =  new FrmCrearPartida();
+        frm.jugador = this.jugador;
+        frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        FrmCrearPartida frm =  new FrmCrearPartida();
+        frm.jugador = this.jugador;
+        frm.unirse="unirse";
+        frm.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

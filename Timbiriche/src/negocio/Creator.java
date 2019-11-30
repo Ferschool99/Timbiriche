@@ -11,6 +11,11 @@ package negocio;
  */
 public interface Creator {
     
+    /**
+     *
+     * @param str
+     * @return
+     */
     public Object factoryMethod(String str);
     
 }
