@@ -5,7 +5,7 @@
  */
 package comunicacion;
 
-import java.util.ArrayList;
+import negocio.IJugador;
 import negocio.Jugador;
 import negocio.Linea;
 
@@ -15,13 +15,9 @@ import negocio.Linea;
  */
 public interface Comunicacion {
     
-    public void realizarMovimiento(Linea linea);
+    public void realizarMovimiento(Object elemntoJuego);
     
-    public void enviarJugadores(ArrayList jugadores);
-    
-    public void recibirJugadores(ArrayList jugadores);
-    
-    public void unirsePartida(Jugador jugador, String ip, String puerto);
+    public void unirsePartida(Jugador jugador, String ip, int puerto);
     
     public void abandonarPartida(Jugador jugador);
 

@@ -5,11 +5,13 @@
  */
 package negocio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Fernando
  */
-public class Linea implements ElementoJuego{
+public class Linea implements ElementoJuego, Serializable{
 
     private Jugador owner;
     

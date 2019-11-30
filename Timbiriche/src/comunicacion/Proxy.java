@@ -5,7 +5,7 @@
  */
 package comunicacion;
 
-import java.util.ArrayList;
+import negocio.IJugador;
 import negocio.Jugador;
 import negocio.Linea;
 
@@ -14,32 +14,23 @@ import negocio.Linea;
  * @author Fernando
  */
 public class Proxy implements Comunicacion{
+    
+    RealComunicacion rC = RealComunicacion.getInstance();
 
     @Override
-    public void realizarMovimiento(Linea linea) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void realizarMovimiento(Object elementoJuego) {
+        rC.realizarMovimiento(elementoJuego);
     }
 
     @Override
-    public void enviarJugadores(ArrayList jugadores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void recibirJugadores(ArrayList jugadores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void unirsePartida(Jugador jugador, String ip, String puerto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void unirsePartida(Jugador jugador, String ip, int puerto) {
+        rC.unirsePartida(jugador, ip, puerto);
     }
 
     @Override
     public void abandonarPartida(Jugador jugador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        rC.abandonarPartida(jugador);
     }
 
-    
     
 }

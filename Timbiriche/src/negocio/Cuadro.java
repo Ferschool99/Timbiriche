@@ -5,13 +5,14 @@
  */
 package negocio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Fernando
  */
-public class Cuadro implements ElementoJuego{
+public class Cuadro implements ElementoJuego, Serializable{
     
     private Jugador owner;
     private int positionX;

@@ -5,14 +5,12 @@
  */
 package comunicacion;
 
-import pruebaSocket.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import negocio.IJugador;
-import negocio.Partida;
 
 /**
  *
@@ -27,11 +25,12 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
     private ObjectInputStream salidaCliente; //Flujo de datos de salida
     private String msgRecibido="";
     
+    private RealComunicacion realComunicacion = RealComunicacion.getInstance();
+    
     public Recceiver(int puerto) throws IOException{
         puerto = puerto;
         ss = new ServerSocket(puerto);//Se crea el socket para el servidor en puerto 1234
         cs = new Socket(); //Socket para el cliente
-        //start();
         
     } 
 
@@ -40,9 +39,19 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
     }
     
     public void recibirPaquete(ArrayList paquete){
-        System.out.println(".::Este es el paquete::.");
-        System.out.println(paquete.get(0));
-        System.out.println(paquete.get(1).getClass());
+        if("Registrar".equalsIgnoreCase((String) paquete.get(0))){
+            realComunicacion.registrarJugador((IJugador) paquete.get(1));
+        }
+        if("RecibirJugadores".equalsIgnoreCase((String) paquete.get(0))){
+            realComunicacion.recibirJugadores((ArrayList) paquete.get(1));
+        }
+        if("AbandonarPartida".equalsIgnoreCase((String) paquete.get(0))){
+            realComunicacion.eliminarJugador((negocio.Jugador) paquete.get(1));
+        }
+        if("RegistrarMovimineto".equalsIgnoreCase((String) paquete.get(0))){
+            System.out.println("Entro a registrar xD ");
+            realComunicacion.registrarMovimiento(paquete.get(1));
+        }
     }
     
     @Override
@@ -52,7 +61,6 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
         {
             while(true){
                 cs = ss.accept(); //Accept comienza el socket y espera una conexión desde un cliente
-                System.out.println(".::Remitente en línea::.");
                 //Se obtiene el flujo de salida del cliente para enviarle mensajes
                 salidaCliente = new ObjectInputStream(cs.getInputStream());
                 //Se le envía un mensaje al cliente usando su flujo de salida
