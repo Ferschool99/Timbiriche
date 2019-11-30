@@ -13,6 +13,7 @@ import negocio.ConcreateCreator;
 import negocio.Creator;
 import negocio.IFacadePartida;
 import negocio.IJugador;
+import negocio.Jugador;
 
 /**
  *
@@ -20,6 +21,11 @@ import negocio.IJugador;
  */
 public class Tester {
 
+    public static void enviarPaquete(Jugador jugador, ArrayList paquete) throws IOException{
+       Forwarder f = new Forwarder("127.0.0.1", 9000);
+       f.enviarPaquete(paquete);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -34,8 +40,6 @@ public class Tester {
         
         jugador.setNombre("Fernando");
         
-        System.out.print("Si se guardo alv: :v : ");
-        System.out.println(jugador.getNombre());
         
         ArrayList<Object> paquete = new ArrayList();
         
@@ -46,11 +50,9 @@ public class Tester {
         
         r.esperarPaquete();
         
-        Forwarder f = new Forwarder("127.0.0.1", 9000);
+        enviarPaquete(null, paquete);
         
-        f.enviarPaquete(paquete);
-        
-        
+        enviarPaquete(null, paquete);
         
     }
     

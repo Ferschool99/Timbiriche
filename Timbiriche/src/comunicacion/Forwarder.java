@@ -39,11 +39,10 @@ public class Forwarder
         {
             //Flujo de datos hacia el Recibidor
             salidaServidor = new ObjectOutputStream(cs.getOutputStream());
-            
+
             salidaServidor.writeObject(obj);
             salidaServidor.flush();
             cs.close();//Fin de la conexión
-
         }
         catch (Exception e)
         {

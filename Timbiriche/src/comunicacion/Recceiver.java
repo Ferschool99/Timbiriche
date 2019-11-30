@@ -50,23 +50,24 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
     {
         try
         {
-            cs = ss.accept(); //Accept comienza el socket y espera una conexión desde un cliente
-            System.out.println(".::Remitente en línea::.");
-            //Se obtiene el flujo de salida del cliente para enviarle mensajes
-            salidaCliente = new ObjectInputStream(cs.getInputStream());
-            //Se le envía un mensaje al cliente usando su flujo de salida
-            //Se obtiene el flujo entrante desde el cliente
-            ArrayList paquete = (ArrayList) salidaCliente.readObject();
+            while(true){
+                cs = ss.accept(); //Accept comienza el socket y espera una conexión desde un cliente
+                System.out.println(".::Remitente en línea::.");
+                //Se obtiene el flujo de salida del cliente para enviarle mensajes
+                salidaCliente = new ObjectInputStream(cs.getInputStream());
+                //Se le envía un mensaje al cliente usando su flujo de salida
+                //Se obtiene el flujo entrante desde el cliente
+                ArrayList paquete = (ArrayList) salidaCliente.readObject();
 
-                //Se muestra por pantalla el mensaje recibido
-                //msgRecibido = (String) paquete.get(0);
-                //Peer per = Peer.obtenerInstancia();
-                ss.close();
-                recibirPaquete(paquete);
-                //per.recibirMensage(msgRecibido);
-                //System.out.println("Mensaje:  "+msgRecibido);
-            //Se finaliza la conexión con el cliente
-        
+                    //Se muestra por pantalla el mensaje recibido
+                    //msgRecibido = (String) paquete.get(0);
+                    //Peer per = Peer.obtenerInstancia();
+    //                ss.close();
+                    recibirPaquete(paquete);
+                    //per.recibirMensage(msgRecibido);
+                    //System.out.println("Mensaje:  "+msgRecibido);
+                //Se finaliza la conexión con el cliente
+            }
         }
         catch (Exception e)
         {

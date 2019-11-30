@@ -5,10 +5,12 @@
  */
 package comunicacion;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import timbiriche.Jugador;
-import timbiriche.Linea;
-import timbiriche.Partida;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import negocio.Jugador;
+import negocio.Linea;
 
 /**
  *
@@ -17,9 +19,17 @@ import timbiriche.Partida;
 public class RealComunicacion implements Comunicacion{
 
     ArrayList<Object> paquete;
+    ArrayList<Jugador> jugadores;
+    
+   
     
     public RealComunicacion() {
         paquete = new ArrayList();
+    }
+    
+    private void enviarPaquete(Jugador jugador, ArrayList paquete) throws IOException{
+        Forwarder enviador = new Forwarder(jugador.getIp(), jugador.getPuerto());
+        enviador.enviarPaquete(paquete);
     }
     
     @Override
@@ -29,7 +39,11 @@ public class RealComunicacion implements Comunicacion{
 
     @Override
     public void enviarJugadores(ArrayList jugadores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            Forwarder f = new Forwarder("127.0.0.1", 9000);
+        } catch (IOException ex) {
+            Logger.getLogger(RealComunicacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

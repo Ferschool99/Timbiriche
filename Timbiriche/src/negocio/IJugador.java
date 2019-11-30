@@ -23,9 +23,9 @@ public interface IJugador {
 
     public void setIp(String ip);
 
-    public String getPuerto();
+    public int getPuerto();
 
-    public void setPuerto(String puerto);
+    public void setPuerto(int puerto);
 
     public int getPuntos();
 
