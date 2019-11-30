@@ -16,6 +16,8 @@ import negocio.IJugador;
 public class FrmCrearPartida extends javax.swing.JFrame {
 
     public IJugador jugador;
+    public String unirse;
+    
     /**
      * Creates new form CrearPartida
      */
@@ -25,6 +27,10 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         lblNumJugadores.setVisible(false);
         btnCancelar.setVisible(false);
         btnIniciar.setVisible(false);
+        if(unirse.equals("unirse"))
+        {
+            btnCrearPartida.setText("Unirse");
+        }
     }
 
     /**
@@ -130,11 +136,23 @@ public class FrmCrearPartida extends javax.swing.JFrame {
 
     private void btnCrearPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPartidaActionPerformed
         // TODO add your handling code here:
-        lblJugadores.setVisible(true);
-        lblNumJugadores.setVisible(true);
-        btnCancelar.setVisible(true);
-        btnIniciar.setVisible(true);
-        IFacadePartida partida = (IFacadePartida) ConcreateCreator.factoryMethod("Partida");
+        if(btnCrearPartida.getText().equals(evt))
+        {
+            lblJugadores.setVisible(true);
+            lblNumJugadores.setVisible(true);
+            btnCancelar.setVisible(true);
+            btnIniciar.setVisible(true);
+            IFacadePartida partida = (IFacadePartida) ConcreateCreator.factoryMethod("Partida");
+        }
+        if(btnCrearPartida.getText().equalsIgnoreCase("unirse"))
+        {
+            //llamar al socket para unisrset
+            txtIP.setVisible(false);
+            txtIP1.setVisible(false);
+            btnCrearPartida.setVisible(false);
+            
+            
+        }
         
     }//GEN-LAST:event_btnCrearPartidaActionPerformed
 
