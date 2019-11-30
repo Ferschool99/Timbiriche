@@ -24,7 +24,7 @@ public interface IFacadePartida {
      * @param avatar
      * @param puerto
      */
-    public void crearPartida(Jugador jugador);
+    public void crearPartida(IJugador jugador);
     
     
     /**

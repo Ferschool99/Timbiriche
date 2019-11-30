@@ -11,6 +11,10 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import negocio.ConcreateCreator;
+import negocio.IFacadePartida;
+import negocio.IJugador;
+import negocio.Jugador;
 import negocio.Partida;
 
 /**
@@ -152,10 +156,12 @@ public class FrmRegistro extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        Partida partida = new Partida();
-        partida.crearPartida(txtUsuario.getText(), "localhost", "9000", icono);
+        IJugador jugador = (IJugador) ConcreateCreator.factoryMethod("Jugador");
+        
         this.setVisible(false);
-        new FrmConexionIP().setVisible(true);
+        FrmConexionIP frm = new FrmConexionIP();
+        frm.jugador = jugador;
+        frm.setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**

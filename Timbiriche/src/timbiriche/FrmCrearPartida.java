@@ -5,12 +5,17 @@
  */
 package timbiriche;
 
+import negocio.ConcreateCreator;
+import negocio.IFacadePartida;
+import negocio.IJugador;
+
 /**
  *
  * @author Mauriciowi100
  */
 public class FrmCrearPartida extends javax.swing.JFrame {
 
+    public IJugador jugador;
     /**
      * Creates new form CrearPartida
      */
@@ -129,6 +134,8 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         lblNumJugadores.setVisible(true);
         btnCancelar.setVisible(true);
         btnIniciar.setVisible(true);
+        IFacadePartida partida = (IFacadePartida) ConcreateCreator.factoryMethod("Partida");
+        
     }//GEN-LAST:event_btnCrearPartidaActionPerformed
 
     /**
