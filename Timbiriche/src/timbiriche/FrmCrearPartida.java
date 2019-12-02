@@ -17,20 +17,31 @@ public class FrmCrearPartida extends javax.swing.JFrame {
 
     public IJugador jugador;
     public String unirse;
+    IFacadePartida partida = (IFacadePartida) ConcreateCreator.factoryMethod("partida");
     
     /**
      * Creates new form CrearPartida
      */
-    public FrmCrearPartida() {
+    public FrmCrearPartida(String unirse) {
         initComponents();
         lblJugadores.setVisible(false);
         lblNumJugadores.setVisible(false);
         btnCancelar.setVisible(false);
         btnIniciar.setVisible(false);
+        lblPuerto1.setVisible(false);
+        txtIP2.setVisible(false);
         if(unirse.equals("unirse"))
         {
             btnCrearPartida.setText("Unirse");
+            lblPuerto1.setVisible(true);
+            txtIP2.setVisible(true);
+            //this.partida.recibirJugadores(jugadores);
+            
         }
+    }
+
+    private FrmCrearPartida() {
+        
     }
 
     /**
@@ -45,18 +56,20 @@ public class FrmCrearPartida extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtIP = new javax.swing.JTextField();
         txtIP1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lblPuerto = new javax.swing.JLabel();
         btnCrearPartida = new javax.swing.JButton();
         lblNumJugadores = new javax.swing.JLabel();
         lblJugadores = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        txtIP2 = new javax.swing.JTextField();
+        lblPuerto1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("IP");
 
-        jLabel2.setText("Puerto");
+        lblPuerto.setText("Puerto");
 
         btnCrearPartida.setText("Crear Partida");
         btnCrearPartida.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +86,8 @@ public class FrmCrearPartida extends javax.swing.JFrame {
 
         btnCancelar.setText("Cancelar");
 
+        lblPuerto1.setText("Puerto a unirse");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,16 +96,20 @@ public class FrmCrearPartida extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPuerto)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
                                 .addComponent(txtIP1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(98, 98, 98))))
+                                .addGap(16, 16, Short.MAX_VALUE)
+                                .addComponent(lblPuerto1)
+                                .addGap(11, 11, 11)
+                                .addComponent(txtIP2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(179, 179, 179)
                         .addComponent(lblJugadores))
@@ -105,7 +124,7 @@ public class FrmCrearPartida extends javax.swing.JFrame {
                                     .addGap(10, 10, 10)
                                     .addComponent(btnCancelar))
                                 .addComponent(btnIniciar)))))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,8 +135,11 @@ public class FrmCrearPartida extends javax.swing.JFrame {
                     .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtIP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPuerto)
+                    .addComponent(txtIP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPuerto1)
+                        .addComponent(txtIP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(btnCrearPartida)
                 .addGap(18, 18, 18)
@@ -197,10 +219,12 @@ public class FrmCrearPartida extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearPartida;
     private javax.swing.JButton btnIniciar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblJugadores;
     private javax.swing.JLabel lblNumJugadores;
+    private javax.swing.JLabel lblPuerto;
+    private javax.swing.JLabel lblPuerto1;
     private javax.swing.JTextField txtIP;
     private javax.swing.JTextField txtIP1;
+    private javax.swing.JTextField txtIP2;
     // End of variables declaration//GEN-END:variables
 }
