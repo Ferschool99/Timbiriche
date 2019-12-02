@@ -70,4 +70,8 @@ public interface IFacadePartida {
      */
     public void recibirJugadores(ArrayList<Jugador> jugadores);
     
+    public void setPartidaIniciada(boolean partidaIniciada);
+    
+    public boolean isPartidaIniciada();
+    
 }

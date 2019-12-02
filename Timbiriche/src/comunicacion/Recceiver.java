@@ -16,7 +16,7 @@ import negocio.IJugador;
  *
  * @author fer_p
  */
-public class Recceiver extends Thread  //Se hereda de conexión para hacer uso de los sockets y demás
+class Recceiver extends Thread  //Se hereda de conexión para hacer uso de los sockets y demás
 {
     
     private String mensajeServidor; //Mensajes entrantes (recibidos) en el servidor
@@ -34,11 +34,11 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
         
     } 
 
-    public void esperarPaquete(){
+    void esperarPaquete(){
         start();
     }
     
-    public void recibirPaquete(ArrayList paquete){
+    void recibirPaquete(ArrayList paquete) throws IOException{
         if("Registrar".equalsIgnoreCase((String) paquete.get(0))){
             realComunicacion.registrarJugador((IJugador) paquete.get(1));
         }
@@ -49,8 +49,13 @@ public class Recceiver extends Thread  //Se hereda de conexión para hacer uso d
             realComunicacion.eliminarJugador((negocio.Jugador) paquete.get(1));
         }
         if("RegistrarMovimineto".equalsIgnoreCase((String) paquete.get(0))){
-            System.out.println("Entro a registrar xD ");
             realComunicacion.registrarMovimiento(paquete.get(1));
+        }
+        if("JugadorListo".equalsIgnoreCase((String) paquete.get(0))){
+            realComunicacion.anotarJugadorListo((IJugador) paquete.get(1));
+        }
+        if("Rechazar".equalsIgnoreCase((String) paquete.get(0))){
+            realComunicacion.mostrarPeticionRechazada();
         }
     }
     

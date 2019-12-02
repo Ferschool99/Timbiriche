@@ -16,6 +16,9 @@ public class Partida implements IFacadePartida{
     ArrayList jugadores;
     Jugador turno;
     Tablero tablero;
+    
+    boolean partidaIniciada = false;
+    
     private static Partida partida;
     
     public Partida() {
@@ -88,5 +91,17 @@ public class Partida implements IFacadePartida{
     public void recibirJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
     }
+
+    @Override
+    public boolean isPartidaIniciada() {
+        return partidaIniciada;
+    }
+
+    @Override
+    public void setPartidaIniciada(boolean partidaIniciada) {
+        this.partidaIniciada = partidaIniciada;
+    }
+    
+    
     
 }

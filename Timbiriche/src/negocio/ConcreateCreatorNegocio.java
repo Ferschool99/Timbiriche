@@ -9,7 +9,7 @@ package negocio;
  *
  * @author Fernando
  */
-public class ConcreateCreator {
+public class ConcreateCreatorNegocio {
 
     public static Object factoryMethod(String str) {
         

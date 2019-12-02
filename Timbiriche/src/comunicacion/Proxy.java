@@ -5,6 +5,7 @@
  */
 package comunicacion;
 
+import java.io.IOException;
 import negocio.IJugador;
 import negocio.Jugador;
 import negocio.Linea;
@@ -13,7 +14,7 @@ import negocio.Linea;
  *
  * @author Fernando
  */
-public class Proxy implements Comunicacion{
+class Proxy implements IComunicacion{
     
     RealComunicacion rC = RealComunicacion.getInstance();
 
@@ -23,14 +24,23 @@ public class Proxy implements Comunicacion{
     }
 
     @Override
-    public void unirsePartida(Jugador jugador, String ip, int puerto) {
+    public void unirsePartida(IJugador jugador, String ip, int puerto) {
         rC.unirsePartida(jugador, ip, puerto);
     }
 
     @Override
-    public void abandonarPartida(Jugador jugador) {
+    public void abandonarPartida(IJugador jugador) {
         rC.abandonarPartida(jugador);
     }
 
-    
+    @Override
+    public void crearPartida(IJugador jugador) throws IOException {
+        rC.crearPartida(jugador);
+    }
+
+    @Override
+    public void iniciarPartida(IJugador jugador) {
+        rC.iniciarPartida(jugador);
+    }
+
 }

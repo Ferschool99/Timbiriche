@@ -9,7 +9,7 @@ package comunicacion;
  *
  * @author Fernando
  */
-public class ConcreateCreator implements Creator{
+public class ConcreateCreatorComunicacion implements ICreator{
 
     @Override
     public Object FactoryMethod(String str) {

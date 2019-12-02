@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
  *
  * @author fer_p
  */
-public class Forwarder
+class Forwarder
 {
     
     private int puerto = 1234; //Puerto para la conexión
@@ -27,13 +27,13 @@ public class Forwarder
     private Socket cs; //Socket del cliente
     private ObjectOutputStream salidaServidor, salidaCliente; //Flujo de datos de salida
     
-    public Forwarder(String ip, int puerto) throws IOException{
+    Forwarder(String ip, int puerto) throws IOException{
         this.ip = ip;
         this.puerto = puerto;
         cs = new Socket(ip, puerto);
     } //Se usa el constructor para remitente de Conexion
 
-    public void enviarPaquete(Object obj) //Método para iniciar el Remitente
+    void enviarPaquete(Object obj) //Método para iniciar el Remitente
     {
         try
         {

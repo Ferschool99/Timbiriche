@@ -5,6 +5,7 @@
  */
 package comunicacion;
 
+import java.io.IOException;
 import negocio.IJugador;
 import negocio.Jugador;
 import negocio.Linea;
@@ -13,12 +14,16 @@ import negocio.Linea;
  *
  * @author Fernando
  */
-public interface Comunicacion {
+public interface IComunicacion {
     
     public void realizarMovimiento(Object elemntoJuego);
     
-    public void unirsePartida(Jugador jugador, String ip, int puerto);
+    public void unirsePartida(IJugador jugador, String ip, int puerto);
     
-    public void abandonarPartida(Jugador jugador);
+    public void abandonarPartida(IJugador jugador);
+    
+    public void crearPartida(IJugador jugador) throws IOException;
+    
+    public void iniciarPartida(IJugador jugador);
 
 }

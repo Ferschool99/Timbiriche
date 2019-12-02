@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/ConcreateCreator.java</file>
-            <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/comunicacion/ConcreateCreator.java</file>
+            <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/comunicacion/ICreator.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/timbiriche/Jugador.java</file>
-            <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/comunicacion/Comunicacion.java</file>
-            <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/comunicacion/Creator.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/comunicacion/Recceiver.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/comunicacion/Proxy.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/Partida.java</file>
@@ -16,30 +12,16 @@
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/Test/Tester.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/comunicacion/RealComunicacion.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/IFacadePartida.java</file>
+            <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/comunicacion/ConcreateCreatorComunicacion.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/Creator.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/ElementoJuego.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/Cuadro.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/IJugador.java</file>
+            <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/Tablero.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/Linea.java</file>
             <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/Jugador.java</file>
-=======
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/negocio/Partida.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/negocio/ElementoJuego.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/comunicacion/RealComunicacion.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/negocio/Linea.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/comunicacion/Forwarder.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/timbiriche/FrmCrearPartida.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/comunicacion/Recceiver.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/negocio/Creator.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/timbiriche/FrmInicio.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/negocio/Cuadro.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/negocio/IFacadePartida.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/timbiriche/FrmConexionIP.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/Test/Tester.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/timbiriche/FrmRegistro.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/negocio/Jugador.java</file>
-            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/Timbiriche/src/negocio/ConcreateCreator.java</file>
->>>>>>> 6543b395e5bdce3ace767aff3da7893186713704
+            <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/comunicacion/IComunicacion.java</file>
+            <file>file:/D:/Escritorio/Timbiriche/Timbiriche/src/negocio/ConcreateCreatorNegocio.java</file>
         </group>
     </open-files>
 </project-private>

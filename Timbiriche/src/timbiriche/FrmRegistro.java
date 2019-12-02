@@ -11,7 +11,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import negocio.ConcreateCreator;
+import negocio.ConcreateCreatorNegocio;
 import negocio.IFacadePartida;
 import negocio.IJugador;
 import negocio.Jugador;
@@ -156,7 +156,7 @@ public class FrmRegistro extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        IJugador jugador = (IJugador) ConcreateCreator.factoryMethod("Jugador");
+        IJugador jugador = (IJugador) ConcreateCreatorNegocio.factoryMethod("Jugador");
         
         this.setVisible(false);
         FrmConexionIP frm = new FrmConexionIP();

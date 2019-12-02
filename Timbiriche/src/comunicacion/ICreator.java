@@ -9,7 +9,7 @@ package comunicacion;
  *
  * @author Fernando
  */
-public interface Creator {
+public interface ICreator {
     
     public Object FactoryMethod(String str);
 

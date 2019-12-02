@@ -5,7 +5,7 @@
  */
 package timbiriche;
 
-import negocio.ConcreateCreator;
+import negocio.ConcreateCreatorNegocio;
 import negocio.IFacadePartida;
 import negocio.IJugador;
 
@@ -17,7 +17,7 @@ public class FrmCrearPartida extends javax.swing.JFrame {
 
     public IJugador jugador;
     public String unirse;
-    IFacadePartida partida = (IFacadePartida) ConcreateCreator.factoryMethod("partida");
+    IFacadePartida partida = (IFacadePartida) ConcreateCreatorNegocio.factoryMethod("partida");
     
     /**
      * Creates new form CrearPartida
@@ -164,7 +164,7 @@ public class FrmCrearPartida extends javax.swing.JFrame {
             lblNumJugadores.setVisible(true);
             btnCancelar.setVisible(true);
             btnIniciar.setVisible(true);
-            IFacadePartida partida = (IFacadePartida) ConcreateCreator.factoryMethod("Partida");
+            IFacadePartida partida = (IFacadePartida) ConcreateCreatorNegocio.factoryMethod("Partida");
         }
         if(btnCrearPartida.getText().equalsIgnoreCase("unirse"))
         {

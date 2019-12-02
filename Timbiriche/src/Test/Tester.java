@@ -5,18 +5,16 @@
  */
 package Test;
 
-import comunicacion.Forwarder;
-import comunicacion.RealComunicacion;
-import comunicacion.Recceiver;
 import java.io.IOException;
 import java.util.ArrayList;
-import negocio.ConcreateCreator;
+import negocio.ConcreateCreatorNegocio;
 import negocio.Creator;
 import negocio.ElementoJuego;
 import negocio.IFacadePartida;
 import negocio.IJugador;
 import negocio.Jugador;
 import negocio.Linea;
+import comunicacion.IComunicacion;
 
 /**
  *
@@ -30,7 +28,9 @@ public class Tester {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        ConcreateCreator creador = new ConcreateCreator();
+        ConcreateCreatorNegocio creador = new ConcreateCreatorNegocio();
+        
+        IComunicacion c = (IComunicacion) creador.factoryMethod("Proxy");
         
         IJugador jugador = (IJugador) creador.factoryMethod("Jugador");
         
@@ -46,25 +46,29 @@ public class Tester {
         paquete.add("Unirse");
         paquete.add(jugador);
         
+        c.crearPartida(jugador);
+        //Recceiver r = new Recceiver(9000);
         
-        Recceiver r = new Recceiver(9000);
+        //r.esperarPaquete();
         
-        r.esperarPaquete();
+        //RealComunicacion rC = RealComunicacion.getInstance();
         
-        RealComunicacion rC = RealComunicacion.getInstance();
-        
-        
-        rC.unirsePartida((Jugador) jugador, "127.0.0.1", 9000);
+        c.unirsePartida((Jugador) jugador, "127.0.0.1", 9000);
+        //rC.unirsePartida((Jugador) jugador, "127.0.0.1", 9000);
         
         
         jugador.setNombre("Mauricio");
-        rC.unirsePartida((Jugador) jugador, "127.0.0.1", 9000);
+        c.unirsePartida((Jugador) jugador, "127.0.0.1", 9000);
+        //rC.unirsePartida((Jugador) jugador, "127.0.0.1", 9000);
         
-        rC.abandonarPartida((Jugador) jugador);
+        
+        //rC.abandonarPartida((Jugador) jugador);
+        c.abandonarPartida((Jugador) jugador);
         
         ElementoJuego eL = new Linea((Jugador) jugador);
         
-        rC.realizarMovimiento(eL);
+        //rC.realizarMovimiento(eL);
+        c.realizarMovimiento(eL);
         
     }
     

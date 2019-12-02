@@ -34,4 +34,8 @@ public interface IJugador {
     public Icon getAvatar();
 
     public void setAvatar(Icon avatar);
+    
+    public boolean isEstado();
+    
+    public void setEstado(boolean estado);
 }
