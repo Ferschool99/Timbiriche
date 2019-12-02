@@ -30,7 +30,7 @@ public class Tester {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        Creator creador = new ConcreateCreator();
+        ConcreateCreator creador = new ConcreateCreator();
         
         IJugador jugador = (IJugador) creador.factoryMethod("Jugador");
         

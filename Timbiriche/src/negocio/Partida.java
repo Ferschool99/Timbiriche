@@ -59,11 +59,13 @@ public class Partida implements IFacadePartida{
 
     @Override
     public boolean realizarMovimiento(Jugador jugador, ElementoJuego elementoJuego) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Le hablo a arealizar movimiento de la partida");
+        return true;
     }
 
     @Override
     public boolean registrarJugador(Jugador jugador) {
+        System.out.println("Le hablo a registrar jugador de la partida");
         if(jugadores.size() == 4){
             return false;
         }else{
