@@ -13,7 +13,7 @@ import negocio.ConcreateCreatorNegocio;
 import negocio.ElementoJuego;
 import negocio.IFacadePartida;
 import negocio.IJugador;
-import timbiriche.FrmSalaEspera;
+import presentacion.FrmSalaEspera;
 
 /**
  *
