@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Fernando
  */
-public class Cuadro implements ElementoJuego, Serializable{
+class Cuadro implements ElementoJuego, Serializable{
     
     private Jugador owner;
     private int positionX;
@@ -20,7 +20,7 @@ public class Cuadro implements ElementoJuego, Serializable{
     
     private ArrayList lineas;
 
-    public Cuadro(Jugador owner) {
+    Cuadro(Jugador owner) {
         this.owner = owner;
         lineas = new ArrayList();
     }
@@ -50,18 +50,22 @@ public class Cuadro implements ElementoJuego, Serializable{
         return (ElementoJuego) lineas.get(i);
     }
 
+    @Override
     public int getPositionX() {
         return positionX;
     }
 
+    @Override
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
 
+    @Override
     public int getPositionY() {
         return positionY;
     }
 
+    @Override
     public void setPositionY(int positionY) {
         this.positionY = positionY;
     }

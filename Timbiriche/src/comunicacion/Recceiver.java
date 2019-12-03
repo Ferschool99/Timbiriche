@@ -35,6 +35,7 @@ class Recceiver extends Thread  //Se hereda de conexión para hacer uso de los s
     } 
 
     void esperarPaquete(){
+        System.out.println(".::Servidor iniciado::..  PUERTO: " + ss.getLocalPort());
         start();
     }
     
@@ -46,7 +47,7 @@ class Recceiver extends Thread  //Se hereda de conexión para hacer uso de los s
             realComunicacion.recibirJugadores((ArrayList) paquete.get(1));
         }
         if("AbandonarPartida".equalsIgnoreCase((String) paquete.get(0))){
-            realComunicacion.eliminarJugador((negocio.Jugador) paquete.get(1));
+            realComunicacion.eliminarJugador((IJugador) paquete.get(1));
         }
         if("RegistrarMovimineto".equalsIgnoreCase((String) paquete.get(0))){
             realComunicacion.registrarMovimiento(paquete.get(1));

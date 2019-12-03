@@ -11,14 +11,14 @@ import java.io.Serializable;
  *
  * @author Fernando
  */
-public class Linea implements ElementoJuego, Serializable{
+class Linea implements ElementoJuego, Serializable{
 
     private Jugador owner;
     
     private int positionX;
     private int positionY;
 
-    public Linea(Jugador owner) {
+    Linea(Jugador owner) {
         this.owner = owner;
     }
 
@@ -52,6 +52,7 @@ public class Linea implements ElementoJuego, Serializable{
         return positionX;
     }
 
+    @Override
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }

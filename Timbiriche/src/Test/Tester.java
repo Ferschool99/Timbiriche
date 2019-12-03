@@ -12,8 +12,6 @@ import negocio.Creator;
 import negocio.ElementoJuego;
 import negocio.IFacadePartida;
 import negocio.IJugador;
-import negocio.Jugador;
-import negocio.Linea;
 import comunicacion.IComunicacion;
 
 /**
@@ -53,19 +51,19 @@ public class Tester {
         
         //RealComunicacion rC = RealComunicacion.getInstance();
         
-        c.unirsePartida((Jugador) jugador, "127.0.0.1", 9000);
+        c.unirsePartida((IJugador) jugador, "127.0.0.1", 9000);
         //rC.unirsePartida((Jugador) jugador, "127.0.0.1", 9000);
         
         
         jugador.setNombre("Mauricio");
-        c.unirsePartida((Jugador) jugador, "127.0.0.1", 9000);
+        c.unirsePartida((IJugador) jugador, "127.0.0.1", 9000);
         //rC.unirsePartida((Jugador) jugador, "127.0.0.1", 9000);
         
         
         //rC.abandonarPartida((Jugador) jugador);
-        c.abandonarPartida((Jugador) jugador);
+        c.abandonarPartida((IJugador) jugador);
         
-        ElementoJuego eL = new Linea((Jugador) jugador);
+        ElementoJuego eL = null;
         
         //rC.realizarMovimiento(eL);
         c.realizarMovimiento(eL);

@@ -5,17 +5,38 @@
  */
 package timbiriche;
 
+import comunicacion.ConcreateCreatorComunicacion;
+import comunicacion.IComunicacion;
+import negocio.ConcreateCreatorNegocio;
+import negocio.IFacadePartida;
+import negocio.IJugador;
+
 /**
  *
  * @author Mauriciowi100
  */
 public class FrmUnirsePartida extends javax.swing.JFrame {
 
+    
+    IJugador jugador;
+    IFacadePartida partida;
+    
+    ConcreateCreatorComunicacion fabrica = new ConcreateCreatorComunicacion();
+    
+    IComunicacion comunicacion = (IComunicacion) fabrica.FactoryMethod("Proxy");
+    
     /**
      * Creates new form FrmUnirsePartida
      */
-    public FrmUnirsePartida() {
+    public FrmUnirsePartida(IJugador jugador) {
         initComponents();
+        this.jugador = jugador;
+        partida = (IFacadePartida) ConcreateCreatorNegocio.factoryMethod("Partida");
+        partida.crearPartida(jugador);
+//        ConcreateCreatorComunicacion fabrica = new ConcreateCreatorComunicacion();
+//        comunicacion = (IComunicacion) fabrica.FactoryMethod("Proxy");
+        //IFacadePartida partida = (IFacadePartida) ConcreateCreatorNegocio.factoryMethod("Partida");
+//        partida.crearPartida(jugador);
     }
 
     /**
@@ -29,7 +50,9 @@ public class FrmUnirsePartida extends javax.swing.JFrame {
 
         btnEntrar = new javax.swing.JButton();
         lblIP1 = new javax.swing.JLabel();
-        txtIP1 = new javax.swing.JTextField();
+        txtIp = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtPuerto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,6 +65,8 @@ public class FrmUnirsePartida extends javax.swing.JFrame {
 
         lblIP1.setText("IP Partida");
 
+        jLabel1.setText("Puerto");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -49,13 +74,17 @@ public class FrmUnirsePartida extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
+                        .addGap(163, 163, 163)
                         .addComponent(btnEntrar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addComponent(lblIP1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIP1)
+                            .addComponent(jLabel1))
                         .addGap(44, 44, 44)
-                        .addComponent(txtIP1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtIp, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                            .addComponent(txtPuerto))))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -64,10 +93,14 @@ public class FrmUnirsePartida extends javax.swing.JFrame {
                 .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIP1)
-                    .addComponent(txtIP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(btnEntrar)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
@@ -75,47 +108,59 @@ public class FrmUnirsePartida extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        
+        FrmSalaEspera frm = FrmSalaEspera.obtenerInstancia(jugador);
+        System.out.println("Este es el jugador: "+jugador);
+        System.out.println("IP: " + txtIp.getText());
+        System.out.println("Puerto: " + Integer.parseInt(txtPuerto.getText()));
+        
+        
+        
+        comunicacion.unirsePartida(jugador, txtIp.getText(), Integer.parseInt(txtPuerto.getText()));
         
     }//GEN-LAST:event_btnEntrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmUnirsePartida().setVisible(true);
-            }
-        });
-    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(FrmUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(FrmUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(FrmUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(FrmUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new FrmUnirsePartida().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblIP1;
-    private javax.swing.JTextField txtIP1;
+    private javax.swing.JTextField txtIp;
+    private javax.swing.JTextField txtPuerto;
     // End of variables declaration//GEN-END:variables
 }

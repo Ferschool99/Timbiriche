@@ -5,7 +5,6 @@
  */
 package comunicacion;
 
-import pruebaSocket.*;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;

@@ -13,8 +13,7 @@ import negocio.ConcreateCreatorNegocio;
 import negocio.ElementoJuego;
 import negocio.IFacadePartida;
 import negocio.IJugador;
-import negocio.Jugador;
-import negocio.Linea;
+import timbiriche.FrmSalaEspera;
 
 /**
  *
@@ -29,10 +28,12 @@ class RealComunicacion implements IComunicacion{
     
     IFacadePartida partida = (IFacadePartida) creadorNegocio.factoryMethod("Partida");
     
+    Recceiver servidor;
+    
     static RealComunicacion instance;
     
     private RealComunicacion() {
-        paquete = new ArrayList();
+        System.out.println("Se creo la real comunication");
     }
     
     static RealComunicacion getInstance(){
@@ -72,6 +73,7 @@ class RealComunicacion implements IComunicacion{
 
     //Este metodo le va a enviar a todos los jugadores registrados los jugadores
     void enviarJugadores() throws IOException {
+        
         for(int i = 0; i < jugadores.size(); i++){
             paquete.clear();
             paquete.add("RecibirJugadores");
@@ -82,7 +84,16 @@ class RealComunicacion implements IComunicacion{
 
     //Este metod recibira los jugadores y los registrara
     void recibirJugadores(ArrayList jugadores) {
+        System.out.println("Entro a hablarle para setear jugadores!!!");
+        for (int i = 0; i < jugadores.size(); i++) {
+            IJugador j = (IJugador) jugadores.get(i);
+            System.out.print(j.getNombre() + " ");
+        }
+        System.out.println("");
         this.jugadores = jugadores;
+        FrmSalaEspera frm = FrmSalaEspera.obtenerInstancia(null);
+        frm.setJugadores(jugadores);
+        partida.recibirJugadores(jugadores);
         //Aqui le hablamos a la fachada de partida para setear los jugadores <----------------------------------------------------------------------------------------------
     }
 
@@ -130,7 +141,11 @@ class RealComunicacion implements IComunicacion{
      * @param jugador 
      */
     void registrarJugador(IJugador jugador) throws IOException {
-       
+        System.out.println("Entro a rC a registrar a " + jugador.getNombre());
+        
+        IFacadePartida p = (IFacadePartida) ConcreateCreatorNegocio.factoryMethod("partida");
+        jugadores = p.enviarJugadores();
+        
         if(jugadores.size()<4){
             jugadores.add(jugador);
         
@@ -158,6 +173,8 @@ class RealComunicacion implements IComunicacion{
     @Override
     public void crearPartida(IJugador jugador) throws IOException {
         Recceiver r = new Recceiver(jugador.getPuerto()); // Creamos el hilo para que este pendiente de los demas jugadores
+        r.esperarPaquete();
+        System.out.println("Le hablo a iniciar peticiones");
     }
     
     void rechazarPeticion(IJugador jugador) throws IOException{
@@ -176,22 +193,49 @@ class RealComunicacion implements IComunicacion{
 
     @Override
     public void iniciarPartida(IJugador jugador) {
+        System.out.println("Si encotro a iniciar partida en la real comunication");
         paquete.clear();
         paquete.add("JugadorListo");
         paquete.add(jugador);
+        
+        IFacadePartida p = (IFacadePartida) ConcreateCreatorNegocio.factoryMethod("partida");
+        jugadores = p.enviarJugadores(); // Se los esta trayendo de la partida xD tenemos que cambia rel nombre
+        
+        for(int i = 0; i < jugadores.size(); i++){
+            
+            try {
+                enviarPaquete(jugadores.get(i).getIp(),jugadores.get(i).getPuerto(), paquete);
+            } catch (IOException ex) {
+                Logger.getLogger(RealComunicacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
     void anotarJugadorListo(IJugador jugador){
-        jugadores.get(jugadores.indexOf(jugador)).setEstado(true);
+        System.out.println("Entro a anotar jugador como liSi essto");
+        System.out.println("Este es el guey: " + jugadores.get(0).getNombre());
+        
+        int aux = 0;
+        
+        for (int i = 0; i < jugadores.size(); i++) {
+            if(jugadores.get(i).getPuerto() == jugador.getPuerto()){
+                aux = i;
+                break;
+            }
+        }
+        
+        jugadores.get(aux).setEstado(true);
         //Aqui deberia de hacer un recorrido para saber si todos los jugadores
         //ya estan listos para inicar para setear a la partida que ya pueda
         //comenzar a recibir movimientos de los demas jugadores
         //ademas de que no se podran acepetar nuevos jugadores en esta partida
-        boolean iniciar = false;
+        boolean iniciar = true;
+        
+        
         
         for(int i=0; i<jugadores.size(); i++){
-            if(jugadores.get(i).isEstado()){
-                iniciar = true;
+            if(!jugadores.get(i).isEstado()){
+                iniciar = false;
             }
         }
         
@@ -200,9 +244,30 @@ class RealComunicacion implements IComunicacion{
         }
         
         if(iniciar){
+            System.out.println("Se inicio la partida!!!!!!");
             partida.setPartidaIniciada(true);
+            FrmSalaEspera frm = FrmSalaEspera.obtenerInstancia(null);
+            System.out.println("Entro a setear jugador como listo!!!");
+            frm.iniciarLaPartida();
         }
         
+        FrmSalaEspera frm = FrmSalaEspera.obtenerInstancia(null);
+        System.out.println("Entro a setear jugador como listo!!!");
+        frm.setJugadorListo(jugador);
+        
+        
+    }
+
+    @Override
+    public void iniciarSerividor(IJugador jugador) {
+//        try {
+//            servidor = new Recceiver(jugador.getPuerto());
+//        } catch (IOException ex) {
+//            Logger.getLogger(RealComunicacion.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        servidor.esperarPaquete();
+//        System.out.println("Comenzo a esperar el paquete");
     }
     
 }

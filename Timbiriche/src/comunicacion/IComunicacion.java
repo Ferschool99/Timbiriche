@@ -7,8 +7,6 @@ package comunicacion;
 
 import java.io.IOException;
 import negocio.IJugador;
-import negocio.Jugador;
-import negocio.Linea;
 
 /**
  *
@@ -25,5 +23,7 @@ public interface IComunicacion {
     public void crearPartida(IJugador jugador) throws IOException;
     
     public void iniciarPartida(IJugador jugador);
+    
+    public void iniciarSerividor(IJugador jugador);
 
 }

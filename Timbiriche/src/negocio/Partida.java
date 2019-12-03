@@ -5,13 +5,19 @@
  */
 package negocio;
 
+import comunicacion.ConcreateCreatorComunicacion;
+import comunicacion.IComunicacion;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import timbiriche.FrmSalaEspera;
 
 /**
  *
  * @author Fernando
  */
-public class Partida implements IFacadePartida{
+class Partida implements IFacadePartida{
 
     ArrayList jugadores;
     Jugador turno;
@@ -19,9 +25,11 @@ public class Partida implements IFacadePartida{
     
     boolean partidaIniciada = false;
     
+    ConcreateCreatorComunicacion fabrica = new ConcreateCreatorComunicacion();
+    
     private static Partida partida;
     
-    public Partida() {
+    private Partida() {
         this.jugadores = new ArrayList();    
         
     }
@@ -47,7 +55,12 @@ public class Partida implements IFacadePartida{
     @Override
     public void crearPartida(IJugador jugador) {
         jugadores.add((Jugador)jugador);
-        
+        IComunicacion proxy = (IComunicacion) fabrica.FactoryMethod("Proxy");
+        try {
+            proxy.crearPartida(jugador);
+        } catch (IOException ex) {
+            Logger.getLogger(Partida.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -67,7 +80,7 @@ public class Partida implements IFacadePartida{
     }
 
     @Override
-    public boolean registrarJugador(Jugador jugador) {
+    public boolean registrarJugador(IJugador jugador) {
         System.out.println("Le hablo a registrar jugador de la partida");
         if(jugadores.size() == 4){
             return false;
@@ -78,18 +91,22 @@ public class Partida implements IFacadePartida{
     }
 
     @Override
-    public void eliminarJugador(Jugador jugador) {
+    public void eliminarJugador(IJugador jugador) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void enviarJugadores() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList enviarJugadores() {
+        return jugadores; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void recibirJugadores(ArrayList<Jugador> jugadores) {
+    public void recibirJugadores(ArrayList<IJugador> jugadores) {
         this.jugadores = jugadores;
+        if(!partidaIniciada){
+            FrmSalaEspera frm = FrmSalaEspera.obtenerInstancia(null);
+            frm.setJugadores(jugadores);
+        }
     }
 
     @Override

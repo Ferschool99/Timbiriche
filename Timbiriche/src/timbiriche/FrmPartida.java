@@ -9,53 +9,68 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicGraphicsUtils;
+import negocio.ConcreateCreatorNegocio;
+import negocio.IColorJugador;
+import negocio.IFacadePartida;
+import negocio.IJugador;
 
 /**
  *
  * @author fer_p
  */
-public class frmPartida extends javax.swing.JFrame implements ActionListener {
+public class FrmPartida extends javax.swing.JFrame implements ActionListener {
 
     JButton botones[][];
     JPanel cuadros[][];
-    Partida partida;
-    ColorTablero colorTablero;
+    IFacadePartida partida = (IFacadePartida) ConcreateCreatorNegocio.factoryMethod("Partida");
+    IColorJugador colorTablero = (IColorJugador) ConcreateCreatorNegocio.factoryMethod("ColorJugador");
+    
+    ArrayList<IJugador> jugadores = partida.enviarJugadores();
+    
+        
     
     
     /**
      * Creates new form frmPartida
      */
-    public frmPartida() {
+    public FrmPartida() {
         initComponents();
         this.setResizable(false);
-        partida = Partida.obtenerInstancia();
-        colorTablero = new ColorTablero(partida.obtenerJugadores());
-        agregarLineas(partida.getTablero().getSizeX(),partida.getTablero().getSizeY());
-        agregarCuadros(partida.getTablero().getSizeX(),partida.getTablero().getSizeY());
-        int j=partida.obtenerNumJugadores();
+        
+        
+        
+        //colorTablero = new ColorTablero(partida.obtenerJugadores());
+        
+        int x = jugadores.size();
+        int y = jugadores.size();
+        
+        agregarLineas((x*10), (y*10));
+        agregarCuadros((x*10), (y*10));
+        int j= jugadores.size() + 1;
         System.out.println(j);
-        jLabel1.setText(Partida.obtenerInstancia().obtenerJugadores()[0].getName());
+//      jLabel1.setText(Partida.obtenerInstancia().obtenerJugadores()[0].getName());
         if(j==2)
         {
-            jLabel2.setText(Partida.obtenerInstancia().obtenerJugadores()[1].getName());
+//            jLabel2.setText(Partida.obtenerInstancia().obtenerJugadores()[1].getName());
         }
         if(j==3)
         {
-            jLabel2.setText(Partida.obtenerInstancia().obtenerJugadores()[1].getName());
-            jLabel3.setText(Partida.obtenerInstancia().obtenerJugadores()[2].getName());
+//            jLabel2.setText(Partida.obtenerInstancia().obtenerJugadores()[1].getName());
+//            jLabel3.setText(Partida.obtenerInstancia().obtenerJugadores()[2].getName());
         }
         if(j==4)
         {
-            jLabel2.setText(Partida.obtenerInstancia().obtenerJugadores()[1].getName());
-            jLabel3.setText(Partida.obtenerInstancia().obtenerJugadores()[2].getName());
-            jLabel4.setText(Partida.obtenerInstancia().obtenerJugadores()[3].getName());
+//            jLabel2.setText(Partida.obtenerInstancia().obtenerJugadores()[1].getName());
+//            jLabel3.setText(Partida.obtenerInstancia().obtenerJugadores()[2].getName());
+//            jLabel4.setText(Partida.obtenerInstancia().obtenerJugadores()[3].getName());
         }
-        botonJugador1.setBackground(colorTablero.obtenerColor(partida.obtenerJugadores()[0]));
+//        botonJugador1.setBackground(colorTablero.obtenerColor(partida.obtenerJugadores()[0]));
     }
     
     /**
@@ -65,31 +80,31 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
      * hacer los movimientos correspondientes
      */
     public void pintarCuadros(){
-        Partida p = Partida.obtenerInstancia();
-        ElementoJuego[][] cuadros = p.getTablero().obtenerCuadros();
-        for (int i = 0; i < p.getTablero().getSizeX(); i++) {
-            for (int j = 0; j < p.getTablero().getSizeY(); j++) {
-                if(cuadros[i][j].getOwner() != null){
-                    this.cuadros[i][j].setBackground(colorTablero.obtenerColor(cuadros[i][j].getOwner()));
-                
-                }
-            }
-        }
+//        Partida p = Partida.obtenerInstancia();
+//        ElementoJuego[][] cuadros = p.getTablero().obtenerCuadros();
+//        for (int i = 0; i < p.getTablero().getSizeX(); i++) {
+//            for (int j = 0; j < p.getTablero().getSizeY(); j++) {
+//                if(cuadros[i][j].getOwner() != null){
+//                    this.cuadros[i][j].setBackground(colorTablero.obtenerColor(cuadros[i][j].getOwner()));
+//                
+//                }
+//            }
+//        }
     }
 
-    public void pintarLineas(){
-        Partida p = Partida.obtenerInstancia();
-        ElementoJuego[][] lineas = p.getTablero().obtenerLineas();
-        for (int i = 0; i < (p.getTablero().getSizeX()*2)+1; i++) {
-            for (int j = 0; j < p.getTablero().getSizeY()+1; j++) {
-                if(lineas[i][j].getOwner() != null){
-                    //this.botones[i][j].set;
-                    this.botones[i][j].setBackground(colorTablero.obtenerColor(lineas[i][j].getOwner()));
-                    //this.botones[i][j].setEnabled(false);
-                }
-            }
-        }
-    }
+//    public void pintarLineas(){
+//        Partida p = Partida.obtenerInstancia();
+//        ElementoJuego[][] lineas = p.getTablero().obtenerLineas();
+//        for (int i = 0; i < (p.getTablero().getSizeX()*2)+1; i++) {
+//            for (int j = 0; j < p.getTablero().getSizeY()+1; j++) {
+//                if(lineas[i][j].getOwner() != null){
+//                    //this.botones[i][j].set;
+//                    this.botones[i][j].setBackground(colorTablero.obtenerColor(lineas[i][j].getOwner()));
+//                    //this.botones[i][j].setEnabled(false);
+//                }
+//            }
+//        }
+//    }
     
     /**
      * Metodo que permite agregar los cuadros del tablero en el form
@@ -97,7 +112,7 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
      * @param y El tamaño en y del tablero
      */
     public void agregarCuadros(int x, int y){
-        Tablero t = Tablero.obtenerInstancia(10, 10);
+//        Tablero t = Tablero.obtenerInstancia(10, 10);
         cuadros = new JPanel[x][y];
         int posicionx = 0;
         int posiciony = 0;
@@ -267,7 +282,7 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
     private void botonJugador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonJugador1ActionPerformed
         // TODO add your handling code here:
         Color color=JColorChooser.showDialog(this, "Elige un color", Color.BLACK);
-        colorTablero.asignarColor(partida.obtenerJugadores()[0], color);
+//        colorTablero.asignarColor(partida.obtenerJugadores()[0], color);
         botonJugador1.setBackground(color);
     }//GEN-LAST:event_botonJugador1ActionPerformed
 
@@ -277,20 +292,20 @@ public class frmPartida extends javax.swing.JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         for (int i = 0; i < 22; i++) {
             for (int j = 0; j < 11; j++) {
-                if(ae.getSource() == botones[i][j] && partida.getTablero().obtenerLineas()[i][j].getOwner()==null){
-                    Tablero t = Tablero.obtenerInstancia(10, 10);
-                    //botones[i][j].setBackground(Color.black);
-                    
-                    if(partida.ejecutarTurno(partida.obtenerJugadores()[0],i,j)){ //va y le pregunta a partida si es su turno
-                        //los estoy cambiando dinamicamente para pruebas y solo tener dos xd
-                    }else{
-                       partida.ejecutarTurno(partida.obtenerJugadores()[1],i,j);
-                    }
-                    
-                    pintarLineas();
-                    pintarCuadros();
-                    
-                }
+//                if(ae.getSource() == botones[i][j] && partida.getTablero().obtenerLineas()[i][j].getOwner()==null){
+//                    Tablero t = Tablero.obtenerInstancia(10, 10);
+//                    //botones[i][j].setBackground(Color.black);
+//                    
+//                    if(partida.ejecutarTurno(partida.obtenerJugadores()[0],i,j)){ //va y le pregunta a partida si es su turno
+//                        //los estoy cambiando dinamicamente para pruebas y solo tener dos xd
+//                    }else{
+//                       partida.ejecutarTurno(partida.obtenerJugadores()[1],i,j);
+//                    }
+//                    
+//                    pintarLineas();
+//                    pintarCuadros();
+//                    
+//                }
             }
         }
     }

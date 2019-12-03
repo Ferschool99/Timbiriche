@@ -12,7 +12,7 @@ import javax.swing.Icon;
  *
  * @author Fernando
  */
-public class Jugador implements IJugador, Serializable{
+class Jugador implements IJugador, Serializable{
     
     String nombre;
     String ip;
@@ -40,7 +40,7 @@ public class Jugador implements IJugador, Serializable{
         this.estado = estado;
     }
     
-    public Jugador(String nombre, int puerto, String ip, Icon avatar)
+    Jugador(String nombre, int puerto, String ip, Icon avatar)
     {
         this.nombre = nombre;
         this.puerto = puerto;
@@ -48,47 +48,58 @@ public class Jugador implements IJugador, Serializable{
         this.avatar = avatar;
     }
     
+    @Override
     public void sumaPuntos(int puntos)
     {
         this.puntos+=puntos;
     }
 
+    @Override
     public String getNombre() {
         return nombre;
     }
 
+    @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    @Override
     public String getIp() {
         return ip;
     }
 
+    @Override
     public void setIp(String ip) {
         this.ip = ip;
     }
 
+    @Override
     public int getPuerto() {
         return puerto;
     }
 
+    @Override
     public void setPuerto(int puerto) {
         this.puerto = puerto;
     }
 
+    @Override
     public int getPuntos() {
         return puntos;
     }
 
+    @Override
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
 
+    @Override
     public Icon getAvatar() {
         return avatar;
     }
 
+    @Override
     public void setAvatar(Icon avatar) {
         this.avatar = avatar;
     }

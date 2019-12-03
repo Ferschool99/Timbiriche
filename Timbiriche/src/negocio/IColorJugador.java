@@ -11,7 +11,7 @@ import java.awt.Color;
  *
  * @author Fernando
  */
-interface IColorJugador {
+public interface IColorJugador {
     
     public void coloresDefault();
     

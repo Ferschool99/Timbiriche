@@ -7,8 +7,6 @@ package comunicacion;
 
 import java.io.IOException;
 import negocio.IJugador;
-import negocio.Jugador;
-import negocio.Linea;
 
 /**
  *
@@ -40,7 +38,13 @@ class Proxy implements IComunicacion{
 
     @Override
     public void iniciarPartida(IJugador jugador) {
+        System.out.println("Le hablo a iniciar partida en proxy");
         rC.iniciarPartida(jugador);
+    }
+
+    @Override
+    public void iniciarSerividor(IJugador jugador) {
+        rC.iniciarSerividor(jugador);
     }
 
 }

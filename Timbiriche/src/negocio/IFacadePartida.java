@@ -48,27 +48,27 @@ public interface IFacadePartida {
      * Este metodo permite agregar un jugador a la partida
      * @param jugador El jugador que se ha unido a la partida
      */
-    public boolean registrarJugador(Jugador jugador);
+    public boolean registrarJugador(IJugador jugador);
     
     /**
      * Este metodo permite eliminar un jugador de la partida, borrando todas 
      * las jugadas realizadas por el mismo
      * @param jugador El jugador que sera eliminado de la partida
      */
-    public void eliminarJugador(Jugador jugador);
+    public void eliminarJugador(IJugador jugador);
     
     /**
      * Este metodo permite a la partida enviar los jugadores que se han registrado
      * a los demas peers conectados al sistema peer to peer
      * @return 
      */
-    public void enviarJugadores();
+    public ArrayList enviarJugadores();
     
     /**
      * Este metodo permite recibir los jugadores que estan registrados a la partida
      * @param jugadores Los jugadores que se han registrado a la partida
      */
-    public void recibirJugadores(ArrayList<Jugador> jugadores);
+    public void recibirJugadores(ArrayList<IJugador> jugadores);
     
     public void setPartidaIniciada(boolean partidaIniciada);
     
