@@ -166,7 +166,6 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                 panelTablero.remove(cuadros[i][j]);
                 cuadros[i][j].setBounds(posicionx+10, posiciony+10, 40, 40);
                 cuadros[i][j].setVisible(true);
-                cuadros[i][j].setBackground(Color.yellow);
                 panelTablero.add(cuadros[i][j]);
                 posiciony+=50;
             }
@@ -569,11 +568,12 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                         
                         }
                         proxy.realizarMovimiento(partida.getDueno(), i, j);
+                        
+                        System.out.println("Se ejecuto movimiento " + i + " y "+ j );
                     }
 //                    
 //                    pintarLineas();
 //                    pintarCuadros();
-                    System.out.println("Se ejecuto movimiento " + i + " y "+ j );
                     
                     
 //                if(ae.getSource() == botones[i][j] && partida.getTablero().obtenerLineas()[i][j].getOwner()==null){
@@ -589,9 +589,9 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
 //                    pintarLineas();
 //                    pintarCuadros();
 //                    
-                }else{
-                        System.out.println("Linea ocupada");
-                    }
+                        else
+                        System.out.println("linea ocupada");
+                }
             }
         }
     }

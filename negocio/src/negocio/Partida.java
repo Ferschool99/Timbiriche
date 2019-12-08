@@ -21,6 +21,7 @@ class Partida implements IFacadePartida{
     Jugador turno;
     Tablero tablero;
     Jugador dueno;
+    int numTurn = 0;
     
     boolean partidaIniciada = false;
     
@@ -130,7 +131,23 @@ class Partida implements IFacadePartida{
     @Override
     public boolean realizarMovimiento(IJugador jugador, int i, int j) {
         System.out.println("REALIZAR MOVI");
-        return tablero.crearLinea((Jugador) jugador,i, j);
+        turno = (Jugador) jugadores.get(numTurn);
+        if(jugador.getNombre().equalsIgnoreCase(turno.getNombre()))
+        {
+            if(tablero.crearLinea((Jugador) jugador, i, j))
+            {
+                System.out.println("se creo linea 5578");
+                numTurn++;
+                if(numTurn==jugadores.size()) numTurn=0;
+                return true;
+            }
+            else
+            {
+                System.out.println("no se creo linea 5578");
+                return false;
+            }
+        }
+        return false;
     }
 
     @Override
