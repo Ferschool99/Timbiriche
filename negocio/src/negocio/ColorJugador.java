@@ -52,7 +52,7 @@ class ColorJugador implements IColorJugador{
     @Override
     public void asignarColor(IJugador jugador, Color color) {
         for (int i = 0; i < jugadores.size(); i++) {
-                if(jugador == jugadores.get(i)){
+                if(jugador.getNombre().equalsIgnoreCase(jugadores.get(i).getNombre())){
                     colores[i] = color;
                 }
         }

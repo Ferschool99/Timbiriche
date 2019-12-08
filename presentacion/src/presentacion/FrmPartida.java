@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JPanel;
 import negocio.ConcreateCreatorNegocio;
 import negocio.IColorJugador;
@@ -48,7 +49,8 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         lblJugador3Img.setVisible(false);
         lblJugador4.setVisible(false);
         lblJugador4Img.setVisible(false);
-        
+        btnColor3.setVisible(false);
+        btnColor4.setVisible(false);
         
         int x = jugadores.size();
         int y = jugadores.size();
@@ -60,11 +62,13 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         lblJugador1.setText(jugadores.get(0).getNombre());
         lblJugador1Img.setText(null);
         lblJugador1Img.setIcon(jugadores.get(0).getAvatar());
+        btnColor1.setBackground(colorTablero.obtenerColor(jugadores.get(0)));
         if(j==2)
         {
             lblJugador2.setText(jugadores.get(1).getNombre());
             lblJugador2Img.setText(null);
             lblJugador2Img.setIcon(jugadores.get(1).getAvatar());
+            btnColor2.setBackground(colorTablero.obtenerColor(jugadores.get(1)));
         }
         if(j==3)
         {
@@ -76,6 +80,8 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             lblJugador3.setText(jugadores.get(2).getNombre());
             lblJugador3Img.setText(null);
             lblJugador3Img.setIcon(jugadores.get(2).getAvatar());
+            btnColor2.setBackground(colorTablero.obtenerColor(jugadores.get(1)));
+            btnColor3.setBackground(colorTablero.obtenerColor(jugadores.get(2)));
         }
         if(j==4)
         {
@@ -92,6 +98,9 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             lblJugador4.setText(jugadores.get(3).getNombre());
             lblJugador4Img.setText(null);
             lblJugador4Img.setIcon(jugadores.get(3).getAvatar());
+            btnColor2.setBackground(colorTablero.obtenerColor(jugadores.get(1)));
+            btnColor3.setBackground(colorTablero.obtenerColor(jugadores.get(2)));
+            btnColor4.setBackground(colorTablero.obtenerColor(jugadores.get(3)));
         }
     }
     
@@ -232,6 +241,10 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         lblJugador2 = new javax.swing.JLabel();
         lblJugador3 = new javax.swing.JLabel();
         lblJugador4 = new javax.swing.JLabel();
+        btnColor1 = new javax.swing.JButton();
+        btnColor2 = new javax.swing.JButton();
+        btnColor3 = new javax.swing.JButton();
+        btnColor4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(800, 500));
@@ -279,6 +292,30 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
 
         lblJugador4.setText("jLabel5");
 
+        btnColor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColor1ActionPerformed(evt);
+            }
+        });
+
+        btnColor2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColor2ActionPerformed(evt);
+            }
+        });
+
+        btnColor3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColor3ActionPerformed(evt);
+            }
+        });
+
+        btnColor4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColor4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -305,11 +342,23 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                             .addComponent(lblJugador4Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblJugador1)
-                            .addComponent(lblJugador2)
-                            .addComponent(lblJugador4)
-                            .addComponent(lblJugador3))))
-                .addGap(87, 87, 87)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblJugador2)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnColor3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblJugador3)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnColor2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblJugador1)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnColor1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblJugador4)
+                                .addGap(26, 26, 26)
+                                .addComponent(btnColor4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(46, 46, 46)
                 .addComponent(panelTablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -317,35 +366,54 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+                .addComponent(panelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblJugador1Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblJugador1)))
-                .addGap(30, 30, 30)
-                .addComponent(jLabel3)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblJugador2Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblJugador3))
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblJugador3Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblJugador2))
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblJugador4Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblJugador4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblJugador1Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblJugador1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(33, 33, 33)
+                                    .addComponent(btnColor1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel3)
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblJugador2Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblJugador3)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(btnColor2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblJugador3Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblJugador2)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(97, 97, 97)
+                                .addComponent(btnColor3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(68, 68, 68)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblJugador4Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblJugador4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnColor4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(128, 128, 128)))
                 .addComponent(botonTerminarPartida)
                 .addGap(55, 55, 55))
         );
@@ -358,11 +426,39 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         this.botones[3][4].setBackground(Color.GREEN);
     }//GEN-LAST:event_botonTerminarPartidaActionPerformed
 
+    private void btnColor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColor2ActionPerformed
+        // TODO add your handling code here:
+        Color color = JColorChooser.showDialog(this, "Elige color de Jugador 1", colorTablero.obtenerColor(jugadores.get(1)));
+        colorTablero.asignarColor(jugadores.get(1), color);
+        btnColor2.setBackground(color);
+    }//GEN-LAST:event_btnColor2ActionPerformed
+
+    private void btnColor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColor1ActionPerformed
+        // TODO add your handling code here:
+        Color color = JColorChooser.showDialog(this, "Elige color de Jugador 1", colorTablero.obtenerColor(jugadores.get(0)));
+        colorTablero.asignarColor(jugadores.get(0), color);
+        btnColor1.setBackground(color);
+    }//GEN-LAST:event_btnColor1ActionPerformed
+
+    private void btnColor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColor3ActionPerformed
+        // TODO add your handling code here:
+        Color color = JColorChooser.showDialog(this, "Elige color de Jugador 1", colorTablero.obtenerColor(jugadores.get(2)));
+        colorTablero.asignarColor(jugadores.get(2), color);
+        btnColor3.setBackground(color);
+    }//GEN-LAST:event_btnColor3ActionPerformed
+
+    private void btnColor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColor4ActionPerformed
+        // TODO add your handling code here:
+        Color color = JColorChooser.showDialog(this, "Elige color de Jugador 1", colorTablero.obtenerColor(jugadores.get(3)));
+        colorTablero.asignarColor(jugadores.get(3), color);
+        btnColor4.setBackground(color);
+    }//GEN-LAST:event_btnColor4ActionPerformed
+
     public void pintarLinea(IJugador jugador, int z, int y)
     {
         if(partida.realizarMovimiento(jugador, z, y))
         {
-                this.botones[z][y].setBackground(Color.GREEN);
+                this.botones[z][y].setBackground(colorTablero.obtenerColor(jugador));
                 System.out.println("Pinto linea receiver");
                 System.out.println(colorTablero.obtenerColor(jugador));
                 System.out.println(z);
@@ -438,6 +534,10 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonTerminarPartida;
+    private javax.swing.JButton btnColor1;
+    private javax.swing.JButton btnColor2;
+    private javax.swing.JButton btnColor3;
+    private javax.swing.JButton btnColor4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
