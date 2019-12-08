@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import negocio.ConcreateCreatorNegocio;
-import negocio.ElementoJuego;
 import negocio.IFacadePartida;
 import negocio.IJugador;
 import presentacion.FrmSalaEspera;
@@ -115,6 +114,7 @@ class RealComunicacion implements IComunicacion{
         paquete.clear();
         paquete.add("Registrar");
         paquete.add(jugador);
+        partida.setDueno(jugador);
         try {
             enviarPaquete(ip, puerto, paquete);
         } catch (IOException ex) {
@@ -181,6 +181,7 @@ class RealComunicacion implements IComunicacion{
         Recceiver r = new Recceiver(jugador.getPuerto()); // Creamos el hilo para que este pendiente de los demas jugadores
         r.esperarPaquete();
         partida.crearPartida(jugador);
+        partida.setDueno(jugador);
         System.out.println("Le hablo a iniciar peticiones");
     }
     

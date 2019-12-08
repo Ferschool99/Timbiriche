@@ -20,6 +20,7 @@ class Partida implements IFacadePartida{
     ArrayList jugadores;
     Jugador turno;
     Tablero tablero;
+    Jugador dueno;
     
     boolean partidaIniciada = false;
     
@@ -60,17 +61,14 @@ class Partida implements IFacadePartida{
     public boolean iniciarPartida() {
         if(jugadores.size() >= 2){
             tablero = new Tablero((jugadores.size()*10),(jugadores.size()*10));
+            System.out.println("INICIA LA PARTIDAAAAA");
         }else{
             return false;
         }
         return true;
     }
 
-    @Override
-    public boolean realizarMovimiento(Jugador jugador, ElementoJuego elementoJuego) {
-        System.out.println("Le hablo a arealizar movimiento de la partida");
-        return true;
-    }
+    
 
     @Override
     public boolean registrarJugador(IJugador jugador) {
@@ -108,6 +106,50 @@ class Partida implements IFacadePartida{
     public void setPartidaIniciada(boolean partidaIniciada) {
         this.partidaIniciada = partidaIniciada;
     }
+
+    @Override
+    public boolean tienesDueno(int i, int j) {
+        if(tablero.obtenerLinea()[i][j]!=null)
+        {
+                if(tablero.obtenerLinea()[i][j].getOwner()==null)
+                {
+                    return true;
+                }
+                else 
+                {
+                    return false;
+                }
+        }
+        else
+        {
+            System.out.println("No existen lineas");
+            return true;
+        }
+    }
+
+    @Override
+    public boolean realizarMovimiento(IJugador jugador, int i, int j) {
+        System.out.println("REALIZAR MOVI");
+        return tablero.crearLinea((Jugador) jugador,i, j);
+    }
+
+    @Override
+    public void setDueno(IJugador jugador) {
+        this.dueno = (Jugador) jugador;
+    }
+
+    @Override
+    public IJugador getDueno() {
+        return dueno;
+    }
+
+    @Override
+    public boolean buscarPuntos(IJugador jugador) {
+        return tablero.buscarPuntos((Jugador) jugador);
+    }
+
+   
+    
     
     
     

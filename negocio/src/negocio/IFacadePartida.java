@@ -42,7 +42,7 @@ public interface IFacadePartida {
      * @param elementoJuego El movimiento del jugador
      * @return True en caso de haberse realizado el movimiento con exito
      */
-    public boolean realizarMovimiento(Jugador jugador, ElementoJuego elementoJuego);
+    public boolean realizarMovimiento(IJugador jugador, int i, int j);
     
     /**
      * Este metodo permite agregar un jugador a la partida
@@ -73,5 +73,18 @@ public interface IFacadePartida {
     public void setPartidaIniciada(boolean partidaIniciada);
     
     public boolean isPartidaIniciada();
+    
+    public boolean tienesDueno(int i, int j);
+    
+    public void  setDueno(IJugador jugador);
+
+    public IJugador getDueno();
+    
+    public boolean buscarPuntos(IJugador jugador);
+    
+    
+        
+        
+    
     
 }

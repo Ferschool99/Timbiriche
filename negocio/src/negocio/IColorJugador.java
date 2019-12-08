@@ -12,11 +12,9 @@ import java.awt.Color;
  * @author Fernando
  */
 public interface IColorJugador {
+        
+    public Color obtenerColor(IJugador jugador);
     
-    public void coloresDefault();
-    
-    public Color obtenerColor(Jugador jugador);
-    
-    public void asignarColor(Jugador jugador, Color color);
+    public void asignarColor(IJugador jugador, Color color);
     
 }

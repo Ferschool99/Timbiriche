@@ -24,10 +24,45 @@ class Tablero {
         cuadros = (ElementoJuego[][]) new Cuadro[sizeX][sizeY];
     }
     
-    void crearLinea(ElementoJuego elementoJuego){
-        if(lineas[elementoJuego.getPositionX()][elementoJuego.getPositionY()] != null){
-            lineas[elementoJuego.getPositionX()][elementoJuego.getPositionY()].setJugador(elementoJuego.getOwner());
+    boolean crearLinea(Jugador jugador, int x, int y){
+        if(lineas[x][y] == null){
+            lineas[x][y] = new Linea(jugador);
+            System.out.println("SE ASIGNO JUGADOR A LINEA");
+            return true;
         }
+        return false;
     }
     
+    ElementoJuego[][] obtenerLinea()
+    {
+        return lineas;
+    }
+    
+    public boolean buscarPuntos(Jugador jugador){
+        int contx = 0;
+        boolean b = false;
+        for (int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeY; j++) {
+                if(lineas[contx][j]!=null &&
+                    lineas[contx+1][j+1]!=null &&
+                    lineas[contx+1][j]!=null &&
+                    lineas[contx+2][j]!=null){
+                    System.out.println("Agrego Cuadro al: "+jugador.getNombre());
+                    if(cuadros[j][i]==null){
+                        System.out.println("se creo el cuadro");
+                        cuadros[j][i] = new Cuadro(jugador);
+                        cuadros[j][i].add(lineas[contx][j]);
+                        cuadros[j][i].add(lineas[contx+1][j+1]);
+                        cuadros[j][i].add(lineas[contx+1][j]);
+                        cuadros[j][i].add(lineas[contx+2][j]);
+                        b =  true;
+                    }
+                    
+                }
+            }
+            contx++;
+            contx++;
+        }
+        return b;
+    }
 }

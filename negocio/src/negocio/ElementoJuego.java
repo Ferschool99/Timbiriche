@@ -9,24 +9,24 @@ package negocio;
  *
  * @author Fernando
  */
-public interface ElementoJuego {
+ interface ElementoJuego {
     
-    public Jugador getOwner();
+     Jugador getOwner();
     
-    public void setJugador(Jugador jugador);
+     void setJugador(Jugador jugador);
     
-    public void add(ElementoJuego elementoJuego);
+     void add(ElementoJuego elementoJuego);
     
-    public void remove(ElementoJuego elementoJuego);
+     void remove(ElementoJuego elementoJuego);
     
-    public ElementoJuego getChild(int i);
+     ElementoJuego getChild(int i);
     
-    public int getPositionX();
+     int getPositionX();
     
-    public void setPositionX(int positionX);
+     void setPositionX(int positionX);
     
-    public int getPositionY();
+     int getPositionY();
     
-    public void setPositionY(int positionX);
+     void setPositionY(int positionX);
     
 }
