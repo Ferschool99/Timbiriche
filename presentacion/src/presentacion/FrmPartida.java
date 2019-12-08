@@ -51,12 +51,14 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         lblJugador4Img.setVisible(false);
         btnColor3.setVisible(false);
         btnColor4.setVisible(false);
-        
-        int x = jugadores.size();
-        int y = jugadores.size();
+        this.setResizable(true); //<-------------------------- ELIMINAR ESTA LINEA
+        int x = jugadores.size() - 1;
+        int y = jugadores.size() - 1;
+        x = x*10;
+        y = y*10;
         partida.iniciarPartida();
-        agregarLineas((x*10), (y*10));
-        agregarCuadros((x*10), (y*10));
+        agregarLineas(x, y);
+        agregarCuadros(x, y);
         int j= jugadores.size();
         System.out.println(j);
         lblJugador1.setText(jugadores.get(0).getNombre());
@@ -180,7 +182,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
     private void agregarLineas(int x, int y){
         botones = new JButton[1000][1000];
         int posiciony = 0;
-        for(int i=0; i<(x*2)+1; i++){
+        for(int i=0; i<(x * 2)+1; i++){
             if(i == 0){
                 int posicion = 0;
                 for (int j = 0; j < y; j++) {
@@ -217,6 +219,52 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             }
         }
     }
+    
+    
+    private void cambiarColores(Color newColor, Color oldColor){
+        int x = jugadores.size() - 1;
+        int y = jugadores.size() - 1;
+        x = x*10;
+        y = y*10;
+        
+        //Cambia el color de las lineas
+        for(int i=0; i<(x*2)+1; i++){
+            if(i == 0){
+                int posicion = 0;
+                for (int j = 0; j < y; j++) {
+                    if(botones[i][j].getBackground().equals(oldColor)){
+                        botones[i][j].setBackground(newColor);
+                    }
+                }
+            }else{
+                if(i % 2 != 0){
+                    for (int j = 0; j < y+1; j++) {
+                        if(botones[i][j].getBackground().equals(oldColor)){
+                            botones[i][j].setBackground(newColor);
+                        }
+                    }
+                }else{
+                    for (int j = 0; j < y; j++) {
+                        if(botones[i][j].getBackground().equals(oldColor)){
+                            botones[i][j].setBackground(newColor);
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+        //Cambia los colores de cuadros
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                if(cuadros[i][j].getBackground().equals(oldColor)){
+                    cuadros[i][j].setBackground(newColor);
+                }
+            }
+        }
+        
+    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -377,12 +425,12 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(btnColor1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblJugador1Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblJugador1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(33, 33, 33)
-                                    .addComponent(btnColor1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lblJugador1)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
@@ -428,30 +476,47 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
 
     private void btnColor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColor2ActionPerformed
         // TODO add your handling code here:
-        Color color = JColorChooser.showDialog(this, "Elige color de Jugador 1", colorTablero.obtenerColor(jugadores.get(1)));
-        colorTablero.asignarColor(jugadores.get(1), color);
-        btnColor2.setBackground(color);
+        Color color = JColorChooser.showDialog(this, "Elige color de Jugador 2", colorTablero.obtenerColor(jugadores.get(1)));
+        if(color != null){
+            Color oldColor = btnColor2.getBackground();
+            colorTablero.asignarColor(jugadores.get(1), color);
+            cambiarColores(color, oldColor);
+            btnColor2.setBackground(color);
+        }
     }//GEN-LAST:event_btnColor2ActionPerformed
 
     private void btnColor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColor1ActionPerformed
         // TODO add your handling code here:
+        
         Color color = JColorChooser.showDialog(this, "Elige color de Jugador 1", colorTablero.obtenerColor(jugadores.get(0)));
-        colorTablero.asignarColor(jugadores.get(0), color);
-        btnColor1.setBackground(color);
+        if(color != null){
+            Color oldColor = btnColor1.getBackground();
+            colorTablero.asignarColor(jugadores.get(0), color);
+            cambiarColores(color, oldColor);
+            btnColor1.setBackground(color);
+        }
     }//GEN-LAST:event_btnColor1ActionPerformed
 
     private void btnColor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColor3ActionPerformed
         // TODO add your handling code here:
-        Color color = JColorChooser.showDialog(this, "Elige color de Jugador 1", colorTablero.obtenerColor(jugadores.get(2)));
-        colorTablero.asignarColor(jugadores.get(2), color);
-        btnColor3.setBackground(color);
+        Color color = JColorChooser.showDialog(this, "Elige color de Jugador 3", colorTablero.obtenerColor(jugadores.get(2)));
+        if(color != null){
+            Color oldColor = btnColor3.getBackground();
+            colorTablero.asignarColor(jugadores.get(2), color);
+            cambiarColores(color, oldColor);
+            btnColor3.setBackground(color);
+        }
     }//GEN-LAST:event_btnColor3ActionPerformed
 
     private void btnColor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColor4ActionPerformed
         // TODO add your handling code here:
-        Color color = JColorChooser.showDialog(this, "Elige color de Jugador 1", colorTablero.obtenerColor(jugadores.get(3)));
-        colorTablero.asignarColor(jugadores.get(3), color);
-        btnColor4.setBackground(color);
+        Color color = JColorChooser.showDialog(this, "Elige color de Jugador 4", colorTablero.obtenerColor(jugadores.get(3)));
+        if(color != null){
+            Color oldColor = btnColor4.getBackground();
+            colorTablero.asignarColor(jugadores.get(3), color);
+            cambiarColores(color, oldColor);
+            btnColor4.setBackground(color);
+        }
     }//GEN-LAST:event_btnColor4ActionPerformed
 
     public void pintarLinea(IJugador jugador, int z, int y)
@@ -468,7 +533,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                     System.out.println("entre a pintar cuadro");
                 for (int k = 1; k < x.size()-1; k++) {
                     System.out.println("hola");
-                    this.cuadros[(int)x.get(k)][(int)x.get(k+1)].setBackground(colorTablero.obtenerColor(partida.getDueno()));
+                    this.cuadros[(int)x.get(k)][(int)x.get(k+1)].setBackground(colorTablero.obtenerColor(jugador));
                     k++;
                     k++;
                 }
