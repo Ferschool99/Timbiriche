@@ -74,7 +74,7 @@ public class FrmSalaEspera extends javax.swing.JFrame {
     
     public void iniciarLaPartida(){
         setVisible(false);
-        FrmPartida frm = new FrmPartida();
+        FrmPartida frm = FrmPartida.obtenerInstancia();
         frm.setVisible(true);
     }
     

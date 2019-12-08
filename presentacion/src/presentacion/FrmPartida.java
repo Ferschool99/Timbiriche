@@ -40,7 +40,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
     /**
      * Creates new form frmPartida
      */
-    public FrmPartida() {
+    private FrmPartida() {
         initComponents();
         this.setResizable(false);
         
@@ -247,7 +247,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         );
         panelTableroLayout.setVerticalGroup(
             panelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 501, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         botonTerminarPartida.setText("Terminar Partida");
@@ -258,12 +258,18 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         });
 
         lblJugador1Img.setText("jLabel5");
+        lblJugador1Img.setMaximumSize(new java.awt.Dimension(100, 100));
+        lblJugador1Img.setMinimumSize(new java.awt.Dimension(100, 100));
+        lblJugador1Img.setPreferredSize(new java.awt.Dimension(100, 100));
 
         lblJugador2Img.setText("jLabel5");
+        lblJugador2Img.setPreferredSize(new java.awt.Dimension(100, 100));
 
         lblJugador3Img.setText("jLabel5");
+        lblJugador3Img.setPreferredSize(new java.awt.Dimension(100, 100));
 
         lblJugador4Img.setText("jLabel5");
+        lblJugador4Img.setPreferredSize(new java.awt.Dimension(100, 100));
 
         lblJugador1.setText("jLabel5");
 
@@ -285,7 +291,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblJugador2Img)
+                            .addComponent(lblJugador2Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
                                 .addGroup(layout.createSequentialGroup()
@@ -294,9 +300,9 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                                         .addComponent(jLabel2)
                                         .addComponent(jLabel3))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(lblJugador1Img)))
-                            .addComponent(lblJugador3Img)
-                            .addComponent(lblJugador4Img))
+                                    .addComponent(lblJugador1Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblJugador3Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblJugador4Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblJugador1)
@@ -311,7 +317,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                .addComponent(panelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
@@ -321,21 +327,21 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblJugador1Img)
+                        .addComponent(lblJugador1Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblJugador1)))
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblJugador2Img)
+                    .addComponent(lblJugador2Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblJugador3))
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblJugador3Img)
+                    .addComponent(lblJugador3Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblJugador2))
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblJugador4Img)
+                    .addComponent(lblJugador4Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblJugador4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
@@ -349,7 +355,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
 
     private void botonTerminarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTerminarPartidaActionPerformed
         // TODO add your handling code here:
-        
+        this.botones[3][4].setBackground(Color.GREEN);
     }//GEN-LAST:event_botonTerminarPartidaActionPerformed
 
     public void pintarLinea(IJugador jugador, int z, int y)
