@@ -144,7 +144,7 @@ class Partida implements IFacadePartida{
     }
 
     @Override
-    public boolean buscarPuntos(IJugador jugador) {
+    public ArrayList buscarPuntos(IJugador jugador) {
         return tablero.buscarPuntos((Jugador) jugador);
     }
 

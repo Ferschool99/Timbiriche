@@ -80,7 +80,7 @@ public interface IFacadePartida {
 
     public IJugador getDueno();
     
-    public boolean buscarPuntos(IJugador jugador);
+    public ArrayList buscarPuntos(IJugador jugador);
     
     
         

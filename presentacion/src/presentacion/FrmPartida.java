@@ -5,16 +5,14 @@
  */
 package presentacion;
 
+import comunicacion.ConcreateCreatorComunicacion;
+import comunicacion.IComunicacion;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
 import negocio.ConcreateCreatorNegocio;
 import negocio.IColorJugador;
 import negocio.IFacadePartida;
@@ -30,6 +28,9 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
     JPanel cuadros[][];
     IFacadePartida partida = (IFacadePartida) ConcreateCreatorNegocio.factoryMethod("Partida");
     IColorJugador colorTablero = (IColorJugador) ConcreateCreatorNegocio.factoryMethod("ColorJugador");
+    ConcreateCreatorComunicacion fabrica = new ConcreateCreatorComunicacion();
+    IComunicacion proxy = (IComunicacion) fabrica.FactoryMethod("Proxy");
+    public static FrmPartida instance;
     
     ArrayList<IJugador> jugadores = partida.enviarJugadores();
     
@@ -93,6 +94,16 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             lblJugador4Img.setIcon(jugadores.get(3).getAvatar());
         }
     }
+    
+    public static FrmPartida obtenerInstancia(){
+        
+        if(instance == null){
+            instance = new FrmPartida();
+        }
+        
+        return instance;
+    }
+
     
     /**
      * Este metodo se encarga de pintar los cuadros segun los dueños dentro del
@@ -341,6 +352,29 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         
     }//GEN-LAST:event_botonTerminarPartidaActionPerformed
 
+    public void pintarLinea(IJugador jugador, int z, int y)
+    {
+        if(partida.realizarMovimiento(jugador, z, y))
+        {
+                this.botones[z][y].setBackground(Color.GREEN);
+                System.out.println("Pinto linea receiver");
+                System.out.println(colorTablero.obtenerColor(jugador));
+                System.out.println(z);
+                System.out.println(y);
+                ArrayList x = partida.buscarPuntos(jugador);
+                if(!x.isEmpty()){
+                    System.out.println("entre a pintar cuadro");
+                for (int k = 1; k < x.size()-1; k++) {
+                    System.out.println("hola");
+                    this.cuadros[(int)x.get(k)][(int)x.get(k+1)].setBackground(colorTablero.obtenerColor(partida.getDueno()));
+                    k++;
+                    k++;
+                }
+                x.clear();
+
+                }
+        }
+    }
     
     //Aqui es donde estaremos interpretando todas las entradas de eventos de los botones
     @Override
@@ -355,9 +389,19 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                         //los estoy cambiando dinamicamente para pruebas y solo tener dos xd
                         System.out.println("Se asigno linea");
                         this.botones[i][j].setBackground(colorTablero.obtenerColor((IJugador) partida.getDueno()));
-                        if(partida.buscarPuntos(partida.getDueno()))
-                            this.cuadros[j][i].setBackground(colorTablero.obtenerColor(partida.getDueno()));
+                        ArrayList x = partida.buscarPuntos(partida.getDueno());
+                        if(!x.isEmpty()){
+                            System.out.println("entre a pintar cuadro");
+                        for (int k = 1; k < x.size()-1; k++) {
+                            System.out.println("hola");
+                            this.cuadros[(int)x.get(k)][(int)x.get(k+1)].setBackground(colorTablero.obtenerColor(partida.getDueno()));
+                            k++;
+                            k++;
+                        }
+                        x.clear();
                         
+                        }
+                        proxy.realizarMovimiento(partida.getDueno(), i, j);
                     }
 //                    
 //                    pintarLineas();

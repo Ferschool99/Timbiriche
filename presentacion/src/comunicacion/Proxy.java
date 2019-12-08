@@ -17,8 +17,8 @@ class Proxy implements IComunicacion{
     RealComunicacion rC = RealComunicacion.getInstance();
 
     @Override
-    public void realizarMovimiento(Object elementoJuego) {
-        rC.realizarMovimiento(elementoJuego);
+    public void realizarMovimiento(IJugador jugador, int x, int y ) {
+        rC.realizarMovimiento(jugador,x,y);
     }
 
     @Override

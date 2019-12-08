@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import negocio.ConcreateCreatorNegocio;
 import negocio.IFacadePartida;
 import negocio.IJugador;
+import presentacion.FrmPartida;
 import presentacion.FrmSalaEspera;
 
 /**
@@ -48,14 +49,16 @@ class RealComunicacion implements IComunicacion{
     }
     
     @Override
-    public void realizarMovimiento(Object elementoJuego) {
+    public void realizarMovimiento(IJugador jugador, int x, int y) {
         
         if(partida.isPartidaIniciada()){
             paquete.clear();
             paquete.add("RegistrarMovimineto");
-            paquete.add(elementoJuego);
+            paquete.add(jugador);
+            paquete.add(x);
+            paquete.add(y);
 
-            System.out.println("Entor a realizar");
+            System.out.println("Entro a realizar");
             for(int i = 0; i < jugadores.size(); i++){
 
                 try {
@@ -171,9 +174,11 @@ class RealComunicacion implements IComunicacion{
        
     }
     
-    void registrarMovimiento(Object elementoJuego){
+    void registrarMovimiento(IJugador jugador, int x, int y){
         System.out.println("Movimiento registrado xD ");
         //Aqui le hablaremos a la fachade de partida para registrar el movimiento <----------------------------------------------------------------------------
+        FrmPartida frm = FrmPartida.obtenerInstancia();
+        frm.pintarLinea(jugador,x , y);
     }
 
     @Override

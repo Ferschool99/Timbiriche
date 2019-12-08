@@ -50,7 +50,7 @@ class Recceiver extends Thread  //Se hereda de conexión para hacer uso de los s
             realComunicacion.eliminarJugador((IJugador) paquete.get(1));
         }
         if("RegistrarMovimineto".equalsIgnoreCase((String) paquete.get(0))){
-            realComunicacion.registrarMovimiento(paquete.get(1));
+            realComunicacion.registrarMovimiento((IJugador)paquete.get(1),(int)paquete.get(2),(int)paquete.get(3));
         }
         if("JugadorListo".equalsIgnoreCase((String) paquete.get(0))){
             realComunicacion.anotarJugadorListo((IJugador) paquete.get(1));

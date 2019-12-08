@@ -5,6 +5,8 @@
  */
 package negocio;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Fernando
@@ -38,7 +40,8 @@ class Tablero {
         return lineas;
     }
     
-    public boolean buscarPuntos(Jugador jugador){
+    public ArrayList buscarPuntos(Jugador jugador){
+        ArrayList x = new ArrayList();
         int contx = 0;
         boolean b = false;
         for (int i = 0; i < sizeX; i++) {
@@ -55,7 +58,9 @@ class Tablero {
                         cuadros[j][i].add(lineas[contx+1][j+1]);
                         cuadros[j][i].add(lineas[contx+1][j]);
                         cuadros[j][i].add(lineas[contx+2][j]);
-                        b =  true;
+                        x.add(true);
+                        x.add(j);
+                        x.add(i);
                     }
                     
                 }
@@ -63,6 +68,6 @@ class Tablero {
             contx++;
             contx++;
         }
-        return b;
+        return x;
     }
 }

@@ -14,7 +14,7 @@ import negocio.IJugador;
  */
 public interface IComunicacion {
     
-    public void realizarMovimiento(Object elemntoJuego);
+    public void realizarMovimiento(IJugador jugador, int x, int y);
     
     public void unirsePartida(IJugador jugador, String ip, int puerto);
     
