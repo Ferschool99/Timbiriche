@@ -171,6 +171,8 @@ class RealComunicacion implements IComunicacion{
     void eliminarJugador(IJugador jugador) {
         jugadores.remove(jugador);
         //Aqui le hablaresmos a la fachada de partida para eliminar el jugador <--------------------------------------------------------------------------------
+        FrmPartida frm = FrmPartida.obtenerInstancia();
+        frm.eliminarJugador(jugador);
        
     }
     

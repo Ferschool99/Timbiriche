@@ -225,39 +225,79 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         int y = jugadores.size() - 1;
         x = x*10;
         y = y*10;
-        
-        //Cambia el color de las lineas
-        for(int i=0; i<(x*2)+1; i++){
-            if(i == 0){
-                int posicion = 0;
-                for (int j = 0; j < y; j++) {
-                    if(botones[i][j].getBackground().equals(oldColor)){
-                        botones[i][j].setBackground(newColor);
-                    }
-                }
-            }else{
-                if(i % 2 != 0){
-                    for (int j = 0; j < y+1; j++) {
+        if(newColor==null)
+        {
+            //Cambia el color de las lineas
+            for(int i=0; i<(x*2)+1; i++){
+                if(i == 0){
+                    int posicion = 0;
+                    for (int j = 0; j < y; j++) {
                         if(botones[i][j].getBackground().equals(oldColor)){
-                            botones[i][j].setBackground(newColor);
+                            botones[i][j].setBackground(new JButton().getBackground());
                         }
                     }
                 }else{
+                    if(i % 2 != 0){
+                        for (int j = 0; j < y+1; j++) {
+                            if(botones[i][j].getBackground().equals(oldColor)){
+                                botones[i][j].setBackground(new JButton().getBackground());
+                            }
+                        }
+                    }else{
+                        for (int j = 0; j < y; j++) {
+                            if(botones[i][j].getBackground().equals(oldColor)){
+                                botones[i][j].setBackground(new JButton().getBackground());
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            //Cambia los colores de cuadros
+            for (int i = 0; i < x; i++) {
+                for (int j = 0; j < y; j++) {
+                    if(cuadros[i][j].getBackground().equals(oldColor)){
+                        cuadros[i][j].setBackground(new JButton().getBackground());
+                    }
+                }
+            }
+        }
+        else
+        {
+            //Cambia el color de las lineas
+            for(int i=0; i<(x*2)+1; i++){
+                if(i == 0){
+                    int posicion = 0;
                     for (int j = 0; j < y; j++) {
                         if(botones[i][j].getBackground().equals(oldColor)){
                             botones[i][j].setBackground(newColor);
                         }
                     }
+                }else{
+                    if(i % 2 != 0){
+                        for (int j = 0; j < y+1; j++) {
+                            if(botones[i][j].getBackground().equals(oldColor)){
+                                botones[i][j].setBackground(newColor);
+                            }
+                        }
+                    }else{
+                        for (int j = 0; j < y; j++) {
+                            if(botones[i][j].getBackground().equals(oldColor)){
+                                botones[i][j].setBackground(newColor);
+                            }
+                        }
+                    }
                 }
             }
-        }
-        
-        
-        //Cambia los colores de cuadros
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
-                if(cuadros[i][j].getBackground().equals(oldColor)){
-                    cuadros[i][j].setBackground(newColor);
+
+
+            //Cambia los colores de cuadros
+            for (int i = 0; i < x; i++) {
+                for (int j = 0; j < y; j++) {
+                    if(cuadros[i][j].getBackground().equals(oldColor)){
+                        cuadros[i][j].setBackground(newColor);
+                    }
                 }
             }
         }
@@ -468,9 +508,19 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void eliminarJugador(IJugador jugador)
+    {
+        cambiarColores(null, colorTablero.obtenerColor(jugador));
+        partida.eliminarJugador(jugador);
+        
+    }
+    
     private void botonTerminarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTerminarPartidaActionPerformed
         // TODO add your handling code here:
-        this.botones[3][4].setBackground(Color.GREEN);
+        cambiarColores(null, colorTablero.obtenerColor(partida.getDueno()));
+        partida.eliminarJugador(partida.getDueno());
+        proxy.abandonarPartida(partida.getDueno());
+        System.exit(0);
     }//GEN-LAST:event_botonTerminarPartidaActionPerformed
 
     private void btnColor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColor2ActionPerformed

@@ -84,7 +84,13 @@ class Partida implements IFacadePartida{
 
     @Override
     public void eliminarJugador(IJugador jugador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < jugadores.size()-1; i++) {
+            if(((Jugador)jugadores.get(i)).getNombre().equalsIgnoreCase(jugador.getNombre()))
+            {
+                jugadores.remove(i);
+                tablero.eliminarLineas((Jugador) jugador);
+            }
+        }
     }
 
     @Override

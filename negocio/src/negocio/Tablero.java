@@ -35,6 +35,18 @@ class Tablero {
         return false;
     }
     
+    void eliminarLineas(Jugador jugador)
+    {
+        for (int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeY; j++) {
+                if(lineas[i][j].getOwner().getNombre().equalsIgnoreCase(jugador.getNombre()))
+                {
+                    lineas[i][j] = null;
+                }
+            }
+        }
+    }
+    
     ElementoJuego[][] obtenerLinea()
     {
         return lineas;
