@@ -75,8 +75,8 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             lblJugador2Img.setIcon(jugadores.get(1).getAvatar());
             btnColor2.setBackground(colorTablero.obtenerColor(jugadores.get(1)));
             
-            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
-            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
         }
         if(j==3)
         {
@@ -93,17 +93,17 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             btnColor3.setBackground(colorTablero.obtenerColor(jugadores.get(2)));
             btnColor3.setVisible(true);
             
-            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
-            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
+            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
         }
         if(j==4)
         {
             
-            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
-            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
+            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
+            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
             lblJugador2.setVisible(true);
             lblJugador3.setVisible(true);
             lblJugador3Img.setVisible(true);
@@ -621,7 +621,6 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                 x.clear();
                 setPuntos();
                 }
-                
                 asignTurn();
         }
     }
@@ -663,25 +662,25 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             }
         }
         
-            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
+            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
+            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
         if(x == 0)
         {
-            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
         }
         if(x == 1)
         {
-            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
         }
         if(x == 2)
         {
-            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
         }
         if(x == 3)
         {
-            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
         }
     }
     
@@ -715,9 +714,9 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                         x.clear();
                         setPuntos();
                         }
+                        asignTurn();
                         proxy.realizarMovimiento(partida.getDueno(), i, j);
                         System.out.println("Se ejecuto movimiento " + i + " y "+ j );
-                        asignTurn();
                         
                     }
 //                    
