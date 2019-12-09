@@ -54,12 +54,12 @@
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="lblJugador2" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblJugador3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnColor3" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblJugador3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblJugador2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnColor2" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
@@ -115,7 +115,7 @@
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblJugador2Img" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblJugador3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblJugador2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -128,7 +128,7 @@
                               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblJugador3Img" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblJugador2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblJugador3" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -240,12 +240,12 @@
         <Property name="text" type="java.lang.String" value="jLabel5"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblJugador2">
+    <Component class="javax.swing.JLabel" name="lblJugador3">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel5"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblJugador3">
+    <Component class="javax.swing.JLabel" name="lblJugador2">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel5"/>
       </Properties>

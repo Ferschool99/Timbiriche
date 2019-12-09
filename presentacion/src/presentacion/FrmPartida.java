@@ -61,48 +61,52 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         agregarCuadros(x, y);
         int j= jugadores.size();
         System.out.println(j);
-        lblJugador1.setText(jugadores.get(0).getNombre());
+        lblJugador1.setText("0");
         lblJugador1Img.setText(null);
         lblJugador1Img.setIcon(jugadores.get(0).getAvatar());
         btnColor1.setBackground(colorTablero.obtenerColor(jugadores.get(0)));
         if(j==2)
         {
-            lblJugador2.setText(jugadores.get(1).getNombre());
+            lblJugador2.setText("0");
             lblJugador2Img.setText(null);
             lblJugador2Img.setIcon(jugadores.get(1).getAvatar());
             btnColor2.setBackground(colorTablero.obtenerColor(jugadores.get(1)));
         }
         if(j==3)
         {
+            lblJugador2.setVisible(true);
             lblJugador3.setVisible(true);
             lblJugador3Img.setVisible(true);
-            lblJugador2.setText(jugadores.get(1).getNombre());
+            lblJugador3.setText("0");
             lblJugador2Img.setText(null);
             lblJugador2Img.setIcon(jugadores.get(1).getAvatar());
-            lblJugador3.setText(jugadores.get(2).getNombre());
+            lblJugador2.setText("0");
             lblJugador3Img.setText(null);
             lblJugador3Img.setIcon(jugadores.get(2).getAvatar());
             btnColor2.setBackground(colorTablero.obtenerColor(jugadores.get(1)));
             btnColor3.setBackground(colorTablero.obtenerColor(jugadores.get(2)));
+            btnColor3.setVisible(true);
         }
         if(j==4)
         {
+            lblJugador2.setVisible(true);
             lblJugador3.setVisible(true);
             lblJugador3Img.setVisible(true);
             lblJugador4.setVisible(true);
             lblJugador4Img.setVisible(true);
-            lblJugador2.setText(jugadores.get(1).getNombre());
+            lblJugador3.setText("0");
             lblJugador2Img.setText(null);
             lblJugador2Img.setIcon(jugadores.get(1).getAvatar());
-            lblJugador3.setText(jugadores.get(2).getNombre());
+            lblJugador2.setText("0");
             lblJugador3Img.setText(null);
             lblJugador3Img.setIcon(jugadores.get(2).getAvatar());
-            lblJugador4.setText(jugadores.get(3).getNombre());
+            lblJugador4.setText("0");
             lblJugador4Img.setText(null);
             lblJugador4Img.setIcon(jugadores.get(3).getAvatar());
             btnColor2.setBackground(colorTablero.obtenerColor(jugadores.get(1)));
             btnColor3.setBackground(colorTablero.obtenerColor(jugadores.get(2)));
             btnColor4.setBackground(colorTablero.obtenerColor(jugadores.get(3)));
+            btnColor4.setVisible(true);
         }
     }
     
@@ -325,8 +329,8 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         lblJugador3Img = new javax.swing.JLabel();
         lblJugador4Img = new javax.swing.JLabel();
         lblJugador1 = new javax.swing.JLabel();
-        lblJugador2 = new javax.swing.JLabel();
         lblJugador3 = new javax.swing.JLabel();
+        lblJugador2 = new javax.swing.JLabel();
         lblJugador4 = new javax.swing.JLabel();
         btnColor1 = new javax.swing.JButton();
         btnColor2 = new javax.swing.JButton();
@@ -373,9 +377,9 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
 
         lblJugador1.setText("jLabel5");
 
-        lblJugador2.setText("jLabel5");
-
         lblJugador3.setText("jLabel5");
+
+        lblJugador2.setText("jLabel5");
 
         lblJugador4.setText("jLabel5");
 
@@ -430,11 +434,11 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblJugador2)
+                                .addComponent(lblJugador3)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnColor3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblJugador3)
+                                .addComponent(lblJugador2)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnColor2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -477,7 +481,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblJugador2Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblJugador3)))
+                                    .addComponent(lblJugador2)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(99, 99, 99)
                                 .addComponent(btnColor2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -486,7 +490,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                                 .addGap(57, 57, 57)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblJugador3Img, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblJugador2)))
+                                    .addComponent(lblJugador3)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(97, 97, 97)
                                 .addComponent(btnColor3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -593,10 +597,29 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                     this.cuadros[(int)x.get(k)][(int)x.get(k+1)].setBackground(colorTablero.obtenerColor(jugador));
                     k++;
                     k++;
+                    for (int i = 0; i <= jugadores.size()-1; i++) {
+                        if(jugadores.get(i).getNombre().equalsIgnoreCase(jugador.getNombre())){
+                            jugadores.get(i).sumaPuntos(1);
+                        }
+                    }
                 }
                 x.clear();
-
+                setPuntos();
                 }
+        }
+    }
+    
+    public void setPuntos()
+    {
+        lblJugador1.setText(String.valueOf(jugadores.get(0).getPuntos()));
+        lblJugador2.setText(String.valueOf(jugadores.get(1).getPuntos()));
+        if(jugadores.size()>=3)
+        {
+            lblJugador3.setText(String.valueOf(jugadores.get(2).getPuntos()));
+        }
+        if(jugadores.size()>=4)
+        {
+            lblJugador4.setText(String.valueOf(jugadores.get(3).getPuntos()));
         }
     }
     
@@ -616,17 +639,21 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                         ArrayList x = partida.buscarPuntos(partida.getDueno());
                         if(!x.isEmpty()){
                             System.out.println("entre a pintar cuadro");
-                        for (int k = 1; k < x.size()-1; k++) {
+                        for (int k = 1; k <= x.size()-1; k++) {
                             System.out.println("hola");
                             this.cuadros[(int)x.get(k)][(int)x.get(k+1)].setBackground(colorTablero.obtenerColor(partida.getDueno()));
                             k++;
                             k++;
+                            for (int l = 0; l <= jugadores.size()-1; l++) {
+                                if(jugadores.get(l).getNombre().equalsIgnoreCase(partida.getDueno().getNombre())){
+                                    jugadores.get(l).sumaPuntos(1);
+                                        }
+                                    }
                         }
                         x.clear();
-                        
+                        setPuntos();
                         }
                         proxy.realizarMovimiento(partida.getDueno(), i, j);
-                        
                         System.out.println("Se ejecuto movimiento " + i + " y "+ j );
                     }
 //                    

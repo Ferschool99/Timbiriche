@@ -73,6 +73,7 @@ class Tablero {
                         x.add(true);
                         x.add(j);
                         x.add(i);
+                        jugador.puntos+=1;
                     }
                     
                 }
