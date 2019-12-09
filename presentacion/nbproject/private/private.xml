@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Escritorio/Timbiriche/presentacion/src/presentacion/FrmPartida.java</file>
-            <file>file:/D:/Escritorio/Timbiriche/presentacion/src/presentacion/FrmSalaEspera.java</file>
-            <file>file:/D:/Escritorio/Timbiriche/presentacion/src/comunicacion/Recceiver.java</file>
-            <file>file:/D:/Escritorio/Timbiriche/presentacion/src/comunicacion/RealComunicacion.java</file>
-            <file>file:/D:/Escritorio/Timbiriche/presentacion/src/presentacion/FrmInicio.java</file>
-            <file>file:/D:/Escritorio/Timbiriche/presentacion/src/comunicacion/IComunicacion.java</file>
+            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/presentacion/src/presentacion/FrmSalaEspera.java</file>
+            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/presentacion/src/presentacion/FrmSala.java</file>
+            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/presentacion/src/presentacion/FrmCrearPartida.java</file>
+            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/presentacion/src/comunicacion/Proxy.java</file>
+            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/presentacion/src/presentacion/FrmPartida.java</file>
+            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/presentacion/src/presentacion/FrmRegistroJugador.java</file>
+            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/presentacion/src/comunicacion/RealComunicacion.java</file>
+            <file>file:/E:/Mauriciowi100/Documents/GitHub/Timbiriche/presentacion/src/presentacion/FrmInicio.java</file>
         </group>
     </open-files>
 </project-private>

@@ -145,6 +145,7 @@ class Partida implements IFacadePartida{
                 System.out.println("se creo linea 5578");
                 numTurn++;
                 if(numTurn==jugadores.size()) numTurn=0;
+                turno = (Jugador) jugadores.get(numTurn);
                 return true;
             }
             else

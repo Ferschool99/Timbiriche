@@ -75,8 +75,8 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             lblJugador2Img.setIcon(jugadores.get(1).getAvatar());
             btnColor2.setBackground(colorTablero.obtenerColor(jugadores.get(1)));
             
-            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
-            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
         }
         if(j==3)
         {
@@ -93,17 +93,17 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             btnColor3.setBackground(colorTablero.obtenerColor(jugadores.get(2)));
             btnColor3.setVisible(true);
             
-            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
             lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
-            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
+            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
         }
         if(j==4)
         {
             
-            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
             lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
             lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
-            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.BLACK,5));
+            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.GREEN,5));
             lblJugador2.setVisible(true);
             lblJugador3.setVisible(true);
             lblJugador3Img.setVisible(true);
@@ -123,6 +123,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             btnColor4.setBackground(colorTablero.obtenerColor(jugadores.get(3)));
             btnColor4.setVisible(true);
         }
+        
     }
     
     public static FrmPartida obtenerInstancia(){

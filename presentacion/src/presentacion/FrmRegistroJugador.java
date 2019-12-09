@@ -28,7 +28,8 @@ public class FrmRegistroJugador extends javax.swing.JFrame {
     
     public FrmRegistroJugador() {
         initComponents();
-        File imagen = new File("E:\\Mauriciowi100\\Documents\\GitHub\\Timbiriche\\Timbiriche\\imagen2.jpg");
+        File imagen = new File(new File ("").getAbsolutePath ()+"\\src\\icon.png");
+        System.out.println(new File ("").getAbsolutePath ());
         ImageIcon icon;
         icon = new ImageIcon(imagen.toString());
         System.out.println(icon);
