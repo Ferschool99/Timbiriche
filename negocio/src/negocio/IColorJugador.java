@@ -15,6 +15,6 @@ public interface IColorJugador {
         
     public Color obtenerColor(IJugador jugador);
     
-    public void asignarColor(IJugador jugador, Color color);
+    public boolean asignarColor(IJugador jugador, Color color);
     
 }

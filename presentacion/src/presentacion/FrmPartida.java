@@ -528,9 +528,11 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         Color color = JColorChooser.showDialog(this, "Elige color de Jugador 2", colorTablero.obtenerColor(jugadores.get(1)));
         if(color != null){
             Color oldColor = btnColor2.getBackground();
-            colorTablero.asignarColor(jugadores.get(1), color);
-            cambiarColores(color, oldColor);
-            btnColor2.setBackground(color);
+            if(colorTablero.asignarColor(jugadores.get(1), color)){
+                colorTablero.asignarColor(jugadores.get(1), color);
+                cambiarColores(color, oldColor);
+                btnColor2.setBackground(color);
+            }
         }
     }//GEN-LAST:event_btnColor2ActionPerformed
 
@@ -540,9 +542,11 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         Color color = JColorChooser.showDialog(this, "Elige color de Jugador 1", colorTablero.obtenerColor(jugadores.get(0)));
         if(color != null){
             Color oldColor = btnColor1.getBackground();
-            colorTablero.asignarColor(jugadores.get(0), color);
-            cambiarColores(color, oldColor);
-            btnColor1.setBackground(color);
+            if(colorTablero.asignarColor(jugadores.get(0), color)){
+                colorTablero.asignarColor(jugadores.get(0), color);
+                cambiarColores(color, oldColor);
+                btnColor1.setBackground(color);
+            }
         }
     }//GEN-LAST:event_btnColor1ActionPerformed
 
@@ -551,9 +555,11 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         Color color = JColorChooser.showDialog(this, "Elige color de Jugador 3", colorTablero.obtenerColor(jugadores.get(2)));
         if(color != null){
             Color oldColor = btnColor3.getBackground();
-            colorTablero.asignarColor(jugadores.get(2), color);
-            cambiarColores(color, oldColor);
-            btnColor3.setBackground(color);
+            if(colorTablero.asignarColor(jugadores.get(2), color)){
+                colorTablero.asignarColor(jugadores.get(2), color);
+                cambiarColores(color, oldColor);
+                btnColor3.setBackground(color);
+            }
         }
     }//GEN-LAST:event_btnColor3ActionPerformed
 
@@ -562,9 +568,11 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         Color color = JColorChooser.showDialog(this, "Elige color de Jugador 4", colorTablero.obtenerColor(jugadores.get(3)));
         if(color != null){
             Color oldColor = btnColor4.getBackground();
-            colorTablero.asignarColor(jugadores.get(3), color);
-            cambiarColores(color, oldColor);
-            btnColor4.setBackground(color);
+            if(colorTablero.asignarColor(jugadores.get(3), color)){
+                colorTablero.asignarColor(jugadores.get(3), color);
+                cambiarColores(color, oldColor);
+                btnColor4.setBackground(color);
+            }
         }
     }//GEN-LAST:event_btnColor4ActionPerformed
 
