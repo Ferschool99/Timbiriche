@@ -6,6 +6,7 @@
 package negocio;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.swing.Icon;
 
 /**
@@ -103,5 +104,18 @@ class Jugador implements IJugador, Serializable{
     public void setAvatar(Icon avatar) {
         this.avatar = avatar;
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this.puerto == ((Jugador)obj).getPuerto() && this.ip.equalsIgnoreCase(((Jugador)obj).getIp()))
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+    
+    
     
 }

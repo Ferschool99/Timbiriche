@@ -33,6 +33,8 @@ public interface IFacadePartida {
      */
     public boolean iniciarPartida();
     
+    public IJugador getTurno();
+    
     
     
     /**

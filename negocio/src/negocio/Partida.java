@@ -85,7 +85,7 @@ class Partida implements IFacadePartida{
     @Override
     public void eliminarJugador(IJugador jugador) {
         for (int i = 0; i < jugadores.size()-1; i++) {
-            if(((Jugador)jugadores.get(i)).getNombre().equalsIgnoreCase(jugador.getNombre()))
+            if(((Jugador)jugadores.get(i)).equals(jugador))
             {
                 jugadores.remove(i);
                 tablero.eliminarLineas((Jugador) jugador);
@@ -138,7 +138,7 @@ class Partida implements IFacadePartida{
     public boolean realizarMovimiento(IJugador jugador, int i, int j) {
         System.out.println("REALIZAR MOVI");
         turno = (Jugador) jugadores.get(numTurn);
-        if(jugador.getNombre().equalsIgnoreCase(turno.getNombre()))
+        if(jugador.equals(turno))
         {
             if(tablero.crearLinea((Jugador) jugador, i, j))
             {
@@ -169,6 +169,11 @@ class Partida implements IFacadePartida{
     @Override
     public ArrayList buscarPuntos(IJugador jugador) {
         return tablero.buscarPuntos((Jugador) jugador);
+    }
+
+    @Override
+    public IJugador getTurno() {
+        return turno;
     }
 
    

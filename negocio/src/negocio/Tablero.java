@@ -39,7 +39,7 @@ class Tablero {
     {
         for (int i = 0; i < sizeX; i++) {
             for (int j = 0; j < sizeY; j++) {
-                if(lineas[i][j].getOwner().getNombre().equalsIgnoreCase(jugador.getNombre()))
+                if(lineas[i][j].getOwner().equals(jugador))
                 {
                     lineas[i][j] = null;
                 }

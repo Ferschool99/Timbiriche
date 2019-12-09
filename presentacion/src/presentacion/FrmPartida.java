@@ -11,8 +11,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import negocio.ConcreateCreatorNegocio;
 import negocio.IColorJugador;
@@ -32,6 +34,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
     ConcreateCreatorComunicacion fabrica = new ConcreateCreatorComunicacion();
     IComunicacion proxy = (IComunicacion) fabrica.FactoryMethod("Proxy");
     public static FrmPartida instance;
+    IJugador turno;
     
     ArrayList<IJugador> jugadores = partida.enviarJugadores();
     
@@ -71,6 +74,9 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             lblJugador2Img.setText(null);
             lblJugador2Img.setIcon(jugadores.get(1).getAvatar());
             btnColor2.setBackground(colorTablero.obtenerColor(jugadores.get(1)));
+            
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         }
         if(j==3)
         {
@@ -86,9 +92,18 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             btnColor2.setBackground(colorTablero.obtenerColor(jugadores.get(1)));
             btnColor3.setBackground(colorTablero.obtenerColor(jugadores.get(2)));
             btnColor3.setVisible(true);
+            
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         }
         if(j==4)
         {
+            
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             lblJugador2.setVisible(true);
             lblJugador3.setVisible(true);
             lblJugador3Img.setVisible(true);
@@ -598,7 +613,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                     k++;
                     k++;
                     for (int i = 0; i <= jugadores.size()-1; i++) {
-                        if(jugadores.get(i).getNombre().equalsIgnoreCase(jugador.getNombre())){
+                        if(jugadores.get(i).equals(jugador)){
                             jugadores.get(i).sumaPuntos(1);
                         }
                     }
@@ -606,11 +621,26 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                 x.clear();
                 setPuntos();
                 }
+                
+                asignTurn();
         }
     }
     
     public void setPuntos()
     {
+        int puntos=0;
+        int gan=0;
+        for (int i = 0; i <= jugadores.size()-1; i++) {
+            puntos+=jugadores.get(i).getPuntos();
+            if(jugadores.get(gan).getPuntos()<jugadores.get(i).getPuntos())
+                gan=i;
+        }
+        if(puntos==7)
+        {
+           JOptionPane.showMessageDialog(this, "Partida completada \nGanador : "+jugadores.get(gan).getNombre()+"\nPuntos: "+jugadores.get(gan).getPuntos());
+           System.exit(0);
+            
+        }
         lblJugador1.setText(String.valueOf(jugadores.get(0).getPuntos()));
         lblJugador2.setText(String.valueOf(jugadores.get(1).getPuntos()));
         if(jugadores.size()>=3)
@@ -620,6 +650,38 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
         if(jugadores.size()>=4)
         {
             lblJugador4.setText(String.valueOf(jugadores.get(3).getPuntos()));
+        }
+    }
+    
+    void asignTurn()
+    {
+        turno = partida.getTurno();
+        int x = 0;
+        for (int i = 0; i < jugadores.size(); i++) {
+            if(jugadores.get(i).equals(turno)){
+                x=i;
+            }
+        }
+        
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        if(x == 0)
+        {
+            lblJugador1Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+        }
+        if(x == 1)
+        {
+            lblJugador2Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+        }
+        if(x == 2)
+        {
+            lblJugador3Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+        }
+        if(x == 3)
+        {
+            lblJugador4Img.setBorder(BorderFactory.createLineBorder(Color.GREEN));
         }
     }
     
@@ -645,7 +707,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                             k++;
                             k++;
                             for (int l = 0; l <= jugadores.size()-1; l++) {
-                                if(jugadores.get(l).getNombre().equalsIgnoreCase(partida.getDueno().getNombre())){
+                                if(jugadores.get(l).equals(partida.getDueno())){
                                     jugadores.get(l).sumaPuntos(1);
                                         }
                                     }
@@ -655,6 +717,8 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                         }
                         proxy.realizarMovimiento(partida.getDueno(), i, j);
                         System.out.println("Se ejecuto movimiento " + i + " y "+ j );
+                        asignTurn();
+                        
                     }
 //                    
 //                    pintarLineas();

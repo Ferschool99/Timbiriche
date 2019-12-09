@@ -40,7 +40,7 @@ class ColorJugador implements IColorJugador{
     @Override
     public Color obtenerColor(IJugador jugador) {
      for (int i = 0; i < jugadores.size(); i++) {
-            if(jugador.getNombre().equalsIgnoreCase(jugadores.get(i).getNombre())){
+            if(jugador.equals(jugadores.get(i))){
                 System.out.println("Enconrto color");
                 return colores[i];
             }
@@ -57,7 +57,7 @@ class ColorJugador implements IColorJugador{
             }
         }
         for (int i = 0; i < jugadores.size(); i++) {
-                if(jugador.getNombre().equalsIgnoreCase(jugadores.get(i).getNombre())){
+                if(jugador.equals(jugadores.get(i))){
                     colores[i] = color;
                 }
         }
