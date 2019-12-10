@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /**
- *
+ *  Esta clase permite cambiar el cor
  * @author Fernando
  */
 class ColorJugador implements IColorJugador{

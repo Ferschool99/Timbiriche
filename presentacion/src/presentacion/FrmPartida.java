@@ -638,7 +638,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
             if(jugadores.get(gan).getPuntos()<jugadores.get(i).getPuntos())
                 gan=i;
         }
-        if(puntos==7)
+        if(puntos==5/*(jugadores.size() - 1)*10*/)
         {
            JOptionPane.showMessageDialog(this, "Partida completada \nGanador : "+jugadores.get(gan).getNombre()+"\nPuntos: "+jugadores.get(gan).getPuntos());
            System.exit(0);
@@ -716,12 +716,17 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
                                     }
                         }
                         x.clear();
-                        setPuntos();
                         }
                         asignTurn();
                         proxy.realizarMovimiento(partida.getDueno(), i, j);
                         System.out.println("Se ejecuto movimiento " + i + " y "+ j );
+                        setPuntos();
                         
+                    }
+                    else
+                    {
+                        
+                        JOptionPane.showMessageDialog(this, "No es tu turno >:v");
                     }
 //                    
 //                    pintarLineas();
@@ -741,9 +746,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
 //                    pintarLineas();
 //                    pintarCuadros();
 //                    
-                        else
-                        System.out.println("linea ocupada");
-                }
+                                        }
             }
         }
     }

@@ -177,9 +177,11 @@ class Partida implements IFacadePartida{
         return turno;
     }
 
+    @Override
+    public void sigTurno() {
+        numTurn+=1;
+        if(numTurn==jugadores.size())numTurn=0;
+    }
+
    
-    
-    
-    
-    
 }

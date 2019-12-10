@@ -84,6 +84,8 @@ public interface IFacadePartida {
     
     public ArrayList buscarPuntos(IJugador jugador);
     
+    public void sigTurno();
+    
     
         
         
