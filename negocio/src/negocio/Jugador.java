@@ -116,6 +116,4 @@ class Jugador implements IJugador, Serializable{
             return false;
     }
     
-    
-    
 }

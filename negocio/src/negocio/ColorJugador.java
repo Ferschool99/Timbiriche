@@ -39,6 +39,9 @@ class ColorJugador implements IColorJugador{
 
     @Override
     public Color obtenerColor(IJugador jugador) {
+        for (int i = 0; i < jugadores.size(); i++) {
+            System.out.println(jugador.getNombre() + "<---");
+        }
      for (int i = 0; i < jugadores.size(); i++) {
             if(jugador.equals(jugadores.get(i))){
                 System.out.println("Enconrto color");

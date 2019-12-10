@@ -530,6 +530,9 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
 
     public void eliminarJugador(IJugador jugador)
     {
+        
+        System.out.println("LLego hasta el final del eliminar");
+        System.out.println("buscas "+ jugador.getNombre());
         cambiarColores(null, colorTablero.obtenerColor(jugador));
         partida.eliminarJugador(jugador);
         
@@ -538,7 +541,7 @@ public class FrmPartida extends javax.swing.JFrame implements ActionListener {
     private void botonTerminarPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTerminarPartidaActionPerformed
         // TODO add your handling code here:
         cambiarColores(null, colorTablero.obtenerColor(partida.getDueno()));
-        partida.eliminarJugador(partida.getDueno());
+//        partida.eliminarJugador(partida.getDueno());
         proxy.abandonarPartida(partida.getDueno());
         System.exit(0);
     }//GEN-LAST:event_botonTerminarPartidaActionPerformed
